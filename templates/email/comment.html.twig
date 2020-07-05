@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en-US" style="margin: 0;padding: 0;box-sizing: border-box;">
+<head style="margin: 0;padding: 0;box-sizing: border-box;">
+    <meta charset="UTF-8" style="margin: 0;padding: 0;box-sizing: border-box;">
+    <meta name="viewport" content="width=device-width" style="margin: 0;padding: 0;box-sizing: border-box;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" style="margin: 0;padding: 0;box-sizing: border-box;">
+    <title style="margin: 0;padding: 0;box-sizing: border-box;">Writetf</title>
+</head>
+<body style="margin: 0;padding: 0;box-sizing: border-box;background-color:#ffffff;width: 100%;font-size: 14px;font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;">
+
+<table style="border-spacing: 0;border-collapse: separate;margin: 25px auto 0;padding: 15px;box-sizing: border-box;max-width: 580px;width: 100%;font-size: 15px;border: none;">
+    <tbody style="margin: 0;padding: 0;box-sizing: border-box;">
+    <tr style="margin: 0;padding: 0;box-sizing: border-box;border: none;">
+        <td class="pb-4" style="margin: 0;padding: 0;box-sizing: border-box;border: none;padding-bottom: 20px;">
+            <p class="message" style="margin: 0;padding: 0;box-sizing: border-box;font-size: 17px;">
+                <a href="{{ url('blog_user_index', {userSlug: comment.author.slug}) }}" class="username" style="margin: 0;padding: 0;box-sizing: border-box;text-decoration: none;color: #343a40 !important;font-weight: bold;">{{ comment.author.displayText }}</a> commented on your <a href="{{ url('blog_post', {id: post.id}) }}#comment-{{ comment.id }}" style="margin: 0;padding: 0;box-sizing: border-box;text-decoration: none;color: #026aff;">post</a> {% if isFollower %} you are following {% endif %}              .
+            </p>
+        </td>
+    </tr>
+    <tr style="margin: 0;padding: 0;box-sizing: border-box;border: none;">
+        <td class="pt-4 pr-4 pl-4 pb-3 border-radius-top-1 bg-light" style="margin: 0;padding: 0;box-sizing: border-box;padding-bottom: 15px;padding-top: 20px;padding-left: 20px;padding-right: 20px;border-top-left-radius: 5px;border-top-right-radius: 5px;background:#f7f7f7;">
+            <a href="{{ url('blog_user_index', {userSlug: comment.author.slug}) }}" class="username" style="margin: 0;padding: 0;box-sizing: border-box;text-decoration: none;color: #343a40 !important;font-weight: bold;">{{ comment.author.displayText }}</a> <span class="" style="margin: 0;padding: 0;box-sizing: border-box;"></span>
+            <div style="color: #9E9E9E; margin-top: 5px">{{ comment.publishedAt| date("F j, Y \\a\\t H:i") }}</div>
+        </td>
+    </tr>
+    <tr style="margin: 0;padding: 0;box-sizing: border-box;border: none;">
+        <td class="pr-4 pl-4 pb-4 border-radius-bottom-1 bg-light" style="margin: 0;padding: 0;box-sizing: border-box;padding-bottom: 20px;padding-left: 20px;padding-right: 20px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background:#f7f7f7;">{{ comment.content|length > 50 ? comment.content|slice(0, 50) ~ '...' : comment.content }}</td>
+    </tr>
+    <tr style="margin: 0;padding: 0;box-sizing: border-box;border: none;">
+        <td class="pt-4" style="margin: 0;padding: 0;box-sizing: border-box;border: none;padding-top: 20px;"><a class="btn btn-primary" href="{{ url('blog_post', {id: post.id}) }}#comment-{{ comment.id }}" style="margin: 0;padding: 15px 20px;box-sizing: border-box;text-decoration: none;color: #ffffff;display: inline-block;border-radius: 5px;font-weight: bold;background: #026aff;">View on Writetf</a>
+        </td>
+    </tr>
+    <tr style="margin: 0;padding: 0;box-sizing: border-box;border: none;">
+        <td class="unsubscribe " style="margin: 0;padding: 0;box-sizing: border-box;border: none;padding-top: 35px;">This message was sent to
+            <a href="mailto:{{ to }}" target="_top" style="margin: 0;padding: 0;box-sizing: border-box;text-decoration: none;color: #026aff;">{{ to }}</a>.
+            If you don't want to receive these emails from Writetf in the future, please <a href="mailto:unsubscribe@writetf.com?subject=Unsubscribe%20for%20email%20{{ to }}" style="margin: 0;padding: 0;box-sizing: border-box;text-decoration: none;color: #026aff;">unsubscribe</a>.
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

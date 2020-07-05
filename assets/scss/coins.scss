@@ -1,0 +1,144 @@
+@import "theme.default.light";
+
+.coins {
+  .statics {
+    background: #ffffff;
+
+    .title {
+      font-size: 15px;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.03);
+
+      .icon {
+        margin-right: 7px;
+      }
+    }
+
+    .data {
+      padding: 25px;
+
+      .detail {
+        color: $primary;
+        font-weight: bold;
+        display: flex;
+        align-items: flex-start;
+
+        .number {
+          margin-right: 5px;
+          font-size: 50px;
+          line-height: 50px;
+        }
+
+        .text {
+          font-size: 25px;
+        }
+      }
+
+      .description {
+        color: #868a8e;
+        font-size: 15px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .transactions {
+    margin-top: 25px;
+    background: $white;
+
+
+    h5 {
+      background: rgba(0, 0, 0, 0.03);
+      padding: 12px;
+      margin: 0;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .list {
+      background: #dae0e8;
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        background: #fff;
+        margin-bottom: 1px;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &.receive {
+          border-left-color: $green;
+
+          .amount {
+            background: $green;
+          }
+        }
+
+        &.send {
+          border-left-color: $orange;
+
+          .amount {
+            background: $orange;
+          }
+        }
+
+        .left {
+          display: flex;
+          align-items: center;
+
+          .detail {
+            margin-left: 12px;
+            display: flex;
+            flex-direction: column;
+
+            .date {
+              color: #6d6d6d;
+              font-size: 14px;
+            }
+
+            .description {
+              color: #6d6d6d;
+              font-size: 14px;
+              margin-top: 1px;
+            }
+
+            .title {
+              font-weight: bold;
+              font-size: 15px;
+              a{
+                text-decoration: none;
+              }
+            }
+          }
+        }
+
+        .thumbnail {
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+          }
+        }
+
+        .amount {
+          font-size: 14px;
+          font-weight: bold;
+          background: #6d6d6d;
+          padding: 5px 12px;
+          border-radius: 5px;
+          color: #ffffff;
+
+          .number {
+            i {
+              margin-left: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

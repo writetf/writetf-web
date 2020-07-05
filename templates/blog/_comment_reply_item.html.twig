@@ -1,0 +1,42 @@
+<div id="comment-{{ comment.id }}" class="comment-reply-item">
+    <div class="comment-avatar-wrapper">
+        {{ include('blog/_avatar.html.twig', {user:comment.author}) }}
+    </div>
+    <div class="comment-post-info-block">
+        <div class="comment-data">
+            <div class="comment-content loved">
+                <div class="comment-data-left">
+                    <div class="comment-content-data">
+                        <a class="font-weight-bolder{% if "ROLE_ADMIN" in comment.author.roles %} username-admin{% endif %}"
+                           href="{{ path('blog_user_index', {userSlug: comment.author.slug}) }}">
+                            {{ comment.author.displayText }}</a> <span
+                                class="data">{{ comment.contentDisplay }}</span>
+                    </div>
+                    <div class="love-comment">
+                        <span><i class="fas fa-heart"></i> {{ random(1,100) }}</span>
+                    </div>
+                </div>
+                <div class="comment-utils-dropdown">
+                    <div class="dropdown-group">
+                        <button class="btn-dropdown btn-util"><i class="fas fa-ellipsis-h"></i></button>
+                        <div class="dropdown-data post-actions">
+                            <div class="list-group">
+                                <div class="list-group-item"><a href="#" class="btn"><i class="far fa-edit"></i>
+                                        Edit</a></div>
+                                <div class="list-group-item"><a href="#" class="btn delete"><i
+                                                class="far fa-trash-alt"></i> Delete</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-utils">
+                <button type="button" class="btn btn-util">Like</button>
+{#                <span> · </span>#}
+{#                <button type="button" class="btn btn-util btn-reply">Reply</button>#}
+                <span> · </span>
+                <span class="text-muted"> {{ comment.publishedAt|ago }}</span>
+            </div>
+        </div>
+    </div>
+</div>

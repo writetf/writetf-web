@@ -1,0 +1,8 @@
+{% extends 'english/base.html.twig' %}
+
+{% block title_header %}{{ video.name }}{% endblock %}
+{% block title %}{{ video.name }} {% endblock %}
+
+{% block outside_main %}
+    {{ include('english/_video.html.twig', { video: video}) }}
+{% endblock %}

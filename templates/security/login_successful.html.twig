@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'register-successful' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+      setTimeout(function(){
+        window.location.href = "{{ path('blog_index') }}";
+      }, 5000);
+    </script>
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block main_fullsize %}
+
+    <div class="row">
+        <div class="col-lg-6" style="margin: 0 auto">
+            <div class="card mt-5 mb-5">
+                <div class="card-body text-center">
+                    <p class="pt-3">Thanks for login! Web page redirects to homepage after 5 seconds.</p>
+                    <p>Click <a class="text-primary font-weight-bold" href="{{ path('blog_index') }}">here</a> if your browser does not automatically redirect you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block sidebar_right %}
+    {{ parent() }}
+
+{% endblock %}

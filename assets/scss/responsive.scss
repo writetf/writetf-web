@@ -1,0 +1,155 @@
+@import "theme.default.light";
+@import "variables";
+
+@media (max-width: 992px) {
+  #user,
+  #community {
+    #main {
+      margin: 49px auto;
+    }
+  }
+  #sidebar-right {
+    display: none;
+  }
+  .sticky {
+    position: relative;
+    top: inherit;
+  }
+  .col-lg-12,
+  .col-lg-3 {
+    padding: 0;
+  }
+  footer {
+    .col-lg-12 {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+  .sidebar {
+    .card {
+      border-left: none;
+      border-right: none;
+    }
+  }
+  .body-container {
+    margin-top: 62px;
+  }
+  #main {
+    padding: 0;
+  }
+  header {
+    .col-lg-12 {
+      padding: 0;
+    }
+
+    #header {
+      #logo,
+      #menu-right,
+      #menu-left {
+        display: none;
+      }
+
+      #menu-mobile {
+        display: flex;
+        width: 100%;
+
+        .avatar {
+          .avatar-block {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+
+      #menu-mobile-right {
+        margin-right: 10px;
+      }
+
+      .nav .link {
+        color: $text-color;
+        margin-left: 0 !important;
+      }
+
+      .btn-dropdown {
+        display: none;
+      }
+    }
+
+  }
+  li.item span {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #sidebar-left {
+    display: none;
+  }
+  #primary-nav {
+    z-index: 1;
+
+    ul {
+      li {
+        color: $text-color;
+        padding: 5px 10px 5px 10px;
+
+        a.link {
+          color: $text-color;
+        }
+      }
+
+      li.btn-item {
+        border: none;
+        margin: 12px 0 0 0 !important;
+      }
+    }
+  }
+  .btn-settings {
+    display: block;
+  }
+  .card-header.cover {
+    height: 200px;
+  }
+  div#posts {
+    .card {
+      width: 100% !important;
+      margin: 0 0 12px 0 !important;
+    }
+  }
+  #post-show {
+    .comment-form {
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      max-width: 575px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  header {
+  }
+  #menu-mobile-left,
+  #menu-mobile-right,
+  #menu-mobile {
+    display: none;
+  }
+  .btn-settings {
+    display: none !important;
+  }
+  #main {
+  }
+  .col-lg-12 {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (max-width: 720px) {
+  #post-show {
+    margin-bottom: 95px!important;
+  }
+}

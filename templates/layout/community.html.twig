@@ -1,0 +1,34 @@
+<div id="group-{{ community.id }}" class="group-item community">
+{#    {% if community.cover is not null and displayCover is defined %}#}
+{#        <div class="community-cover" style="background: url({{ community.cover }}) center no-repeat;"></div>#}
+{#    {% endif %}#}
+    <div class="group-item-detail">
+        {% if community.avatar is not null %}
+            <a href="{{ path('blog_community_index', {slug: community.slug}) }}" class="community-avatar-wrapper">
+                <div class="community-avatar">
+                    <img alt="{{ community.displayText }}" src="{{ community.avatar }}"/>
+                </div>
+                <div class="dot-icon"></div>
+            </a>
+        {% endif %}
+        <div class="community-detail">
+            <div>
+                <a href="{{ path('blog_community_index', {slug: community.slug}) }}">
+                    <h1 class="group-title">{{ community.displayText }}</h1>
+                </a>
+            </div>
+            {% if detail is defined %}
+            <div>
+                <a href="{{ path('blog_post', {id: community.posts.first.id}) }}">
+                    <h2 class="post-title">{{ community.posts.first.titleDisPlay }}</h2>
+                </a>
+                <div style="display: flex; color:#8f9193">
+                    <span>{{ community.posts.first.latestActivityAt|ago }}</span>
+                    <span style="margin-right: 5px; margin-left: 5px">•</span>
+                    <span>{{ community.posts.first.author.username }}</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

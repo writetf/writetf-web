@@ -1,0 +1,150 @@
+@import "theme.default.light";
+
+.cart {
+  background: #ffffff;
+
+  .title {
+    font-size: 17px;
+    background: #f7f7f7;
+    padding: 12px;
+    margin: 0;
+    font-weight: bold;
+    border-bottom: 3px solid #f1f1f1;
+  }
+
+  .detail {
+    padding: 12px;
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #dfdfdf;
+      padding-bottom: 12px;
+      padding-top: 12px;
+
+      &:last-child {
+        border: none;
+      }
+
+      .left {
+        display: flex;
+        align-items: center;
+
+        .number{
+            width: 50px;
+            text-align: right;
+          span{
+            font-size: 15px;
+            margin-right: 12px;
+          }
+        }
+
+        .thumbnail {
+          img {
+            width: 65px;
+            height: 65px;
+            border-radius: 10px;
+          }
+        }
+
+        .left-info {
+          margin-left: 12px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          min-height: 50px;
+
+          .item-title {
+            font-weight: 500;
+            font-size: 15px;
+          }
+
+          .information {
+            margin-top: 6px;
+            margin-bottom: 6px;
+          }
+        }
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .price {
+          margin-top: 12px;
+        }
+      }
+
+      .number {
+        input {
+          width: 65px;
+          height: 31px;
+          text-align: center;
+          border-radius: 0;
+          border: 1px solid $primary;
+          border-left: none;
+          border-right: none;
+          background: transparent;
+        }
+      }
+
+    }
+  }
+
+  .calculator {
+    margin-top: 35px;
+    border-top: 1px solid #dfdfdf;
+  }
+
+  .subtotal {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    align-items: center;
+    font-size: 15px;
+
+    &.total {
+      border-top: 1px solid #dfdfdf;
+      padding-top: 12px;
+    }
+
+    .label {
+      margin-right: 5px;
+      font-weight: 500;
+    }
+
+    .subtotal-number {
+      font-size: 17px;
+      font-weight: bold;
+      color: $primary;
+
+      i.fas.fa-coins {
+        font-size: 17px;
+      }
+    }
+  }
+
+  .checkout {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+  }
+
+  i.fas.fa-coins {
+    margin-left: 3px;
+    font-size: 13px;
+  }
+
+  .btn-del {
+    border: none;
+    background: transparent;
+    padding: 0;
+    color: $red;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}

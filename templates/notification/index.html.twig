@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Your notifications{% endblock %}
+
+{% block body_id 'notifications' %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+    <div id="notification" class="card-none-game">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <h6>Your notifications</h6>
+                    <div class="right mark-as-all-read">
+                        <form>
+                            <button class="btn btn-sm btn-mark">Mark all as read</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group">
+                        {% for notification in notifications %}
+                            <li id="notification-{{ notification.id }}" class="list-group-item {% if notification.seen != 1 %}unseen{% endif %}">
+                                <a href="{{ path('blog_post', {id: notification.post.id }) }}#comment-{{ notification.comment.id }}"
+                                   class="text-decoration-none" style="display:flex">
+                                    <div class="chat-avatar">{{ include('blog/_avatar.html.twig', {user:notification.comment.author, noLink:true}) }}</div>
+                                    <div class="block-notidy-info">
+                                        <div class="chat-username">
+                                    <span
+                                            class="font-weight-bolder">
+                                        {{ notification.comment.author.displayText }}
+                                    </span>
+                                            commented on your
+                                            post{% if notification.post.author is not same as(notification.user) %} you are following{% endif %}
+                                            :
+                                            "{{ notification.comment.content|length > 50   ? notification.comment.content|slice(0, 50 ) ~ '...' : notification.comment.content }}
+                                            "
+                                        </div>
+                                        <div class="time text-muted">
+                                            {{ notification.comment.publishedAt|ago }}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item text-center">{{ 'notification.no_notifications_found'|trans }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}

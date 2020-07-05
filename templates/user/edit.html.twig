@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'user_edit' %}
+
+{% block main %}
+    <div id="post-creation" class="card">
+        <div class="card-header pb-0">
+            <h5>{{ 'title.edit_user'|trans }}</h5>
+        </div>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+
+        </div>
+        <div class="card-footer">
+
+            <button type="submit" class="btn btn-outline-light">
+                {{ 'action.save'|trans }}
+            </button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block sidebar_right %}
+    <div class="section">
+        <a href="{{ path('user_change_password') }}" class="btn btn-block btn-danger">
+            {{ 'action.change_password'|trans }}
+        </a>
+    </div>
+
+    {{ parent() }}
+{% endblock %}

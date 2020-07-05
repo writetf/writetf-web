@@ -1,0 +1,69 @@
+@import "theme.default.light";
+
+.settings {
+  .logout {
+    display: flex;
+    justify-content: center;
+
+    .btn-logout {
+      width: 50%;
+      margin-top: 12px;
+    }
+  }
+
+  .setting-group {
+    background: $white;
+    margin-bottom: 12px;
+
+    h5 {
+      background: $grey;
+      font-size: 16px;
+      padding: 12px;
+      margin: 0;
+    }
+
+
+    .item {
+      padding: 12px;
+
+      &:last-child {
+        border: none;
+        margin-bottom: 0;
+      }
+
+      .item-group-title {
+        font-weight: 500;
+        padding: 12px 0;
+        font-size: 17px;
+      }
+
+
+      .item-detail {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #efefef;
+
+        &:last-child {
+          border: none;
+          margin-bottom: 0;
+        }
+
+        span {
+          font-size: 14px;
+
+          i {
+            font-size: 13px;
+          }
+
+          &:first-child {
+            font-weight: 500;
+            min-width: 100px;
+            color: #626365;
+          }
+        }
+      }
+    }
+  }
+}

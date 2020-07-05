@@ -1,0 +1,47 @@
+@import "~bootswatch/flatly/variables";
+@import "~eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build.scss";
+@import "bootstrap-tagsinput.scss";
+@import "~bootstrap-select/dist/css/bootstrap-select.min.css";
+
+/* Page: 'Backend post index'
+   ------------------------------------------------------------------------- */
+body#admin_post_index .item-actions {
+  white-space: nowrap
+}
+
+body#admin_post_index .item-actions a.btn + a.btn {
+  margin-left: 4px
+}
+
+/* Page: 'Backend post show'
+   ------------------------------------------------------------------------- */
+body#admin_post_show .post-tags .label-default {
+  background-color: #e9ecec;
+  color: #6D8283;
+  font-size: 16px;
+  margin-right: 10px;
+  padding: .4em 1em .5em;
+}
+body#admin_post_show .post-tags .label-default i {
+  color: #95A6A7;
+}
+
+
+.bootstrap-tagsinput{
+  width: calc(100% - 45px);
+  height: auto;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  -moz-border-radius-topleft: 0.25rem;
+  -moz-border-radius-topright: 0.25rem;
+  border: 1px solid #ced4da;
+}
+
+.bootstrap-tagsinput .tag{
+  margin-top: 5px;
+}
+
+.bootstrap-tagsinput .twitter-typeahead {
+  margin-top: 5px;
+}

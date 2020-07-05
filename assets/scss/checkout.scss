@@ -1,0 +1,78 @@
+@import "theme.default.light";
+
+.checkout {
+
+  h5.title {
+    font-size: 17px;
+    background: #f7f7f7;
+    padding: 12px;
+    margin: 0;
+    font-weight: bold;
+    border-bottom: 3px solid #f1f1f1;
+  }
+
+  h6.title {
+    background: white;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .item {
+    padding: 12px;
+    background: white;
+  }
+
+  .cart {
+    padding: 0;
+
+    .detail {
+      padding: 0;
+
+      .item {
+        padding: 12px 0;
+      }
+    }
+  }
+
+  .detail {
+
+    padding: 12px 0 0;
+
+    .item-detail {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #efefef;
+      align-items: center;
+
+      &:last-child {
+        border: none;
+        margin-bottom: 0;
+      }
+
+      .label {
+        font-weight: 500;
+        min-width: 100px;
+        color: #626365;
+      }
+
+      input {
+        width: 100%;
+        padding: 6px;
+      }
+    }
+  }
+
+  .place-order {
+    margin: 30px 12px 12px;
+    text-align: center;
+
+    button {
+      width: 300px;
+    }
+  }
+}

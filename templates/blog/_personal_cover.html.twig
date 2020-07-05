@@ -1,0 +1,20 @@
+<div id="personal">
+    <div class="col-lg-12" style="margin-bottom: 12px">
+        <div class="card cover">
+            <div class="card-header cover" style="background: url({{ user.cover }})">
+            </div>
+            <div class="card-body" style="padding:12px">
+                <div class="community-detail" style="display: flex;">
+                    <div style="flex: 1">
+                        <div class="card-title" style="display:flex; align-items: center">
+                            {{ include('blog/_avatar.html.twig', {user: user}) }}
+                            <h4 class="mb-1">{{ user.displayText }}</h4>
+                            <span class=" ml-1">•</span>
+                            <span class=" ml-1">{{ 'post.num_posts'|trans({ 'count': user.posts|length }) }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

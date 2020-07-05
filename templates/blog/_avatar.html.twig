@@ -1,0 +1,13 @@
+{% if noLink is defined %}
+    <div class="avatar-block"
+         {% if user.avatar is not null %}style="background: url({{ user.avatar }}) no-repeat center;background-size: cover;"{% endif %}>
+        {% if user.avatar is null %}<span class="text-avatar">{{ user.textAvatar }}</span>{% endif %}
+    </div>
+{% else %}
+    <a href="{{ path('blog_user_index', {userSlug: user.slug}) }}" class="text-decoration-none">
+        <div class="avatar-block"
+             {% if user.avatar is not null %}style="background: url({{ user.avatar }}) no-repeat center;background-size: cover;"{% endif %}>
+            {% if user.avatar is null %}<span class="text-avatar">{{ user.textAvatar }}</span>{% endif %}
+        </div>
+    </a>
+{% endif %}

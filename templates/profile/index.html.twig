@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Writetf Communities{% endblock %}
+
+{% block body_id 'profile-index' %}
+
+{% block main %}
+    <div class="profile">
+        <h5 class="title">My Profile</h5>
+        <div class="detail">
+            <div class="item username"><span class="label"><i class="fas fa-user"></i> Username</span><span>ga9xvn</span></div>
+            <div class="item phone"><span class="label"><i class="fas fa-phone-square-alt"></i> Phone</span><span>0906807975</span></div>
+            <div class="item email"><span class="label"><i class="fas fa-envelope"></i> Email</span><span>ga9xvn@gmail.com</span></div>
+            <div class="item email"><span class="label"><i class="fas fa-map-marker-alt"></i> Address</span><span>Nga Tu 1, Ngai Hung, Tieu Can, Tra Vinh, Viet Nam</span></div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

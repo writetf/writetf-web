@@ -1,0 +1,58 @@
+@import "theme.default.light";
+@import "variables";
+
+$chat-width: 205px;
+$body-width: calc(100% - 205px);
+@media (min-width: 993px) {
+  #chat {
+    width: $chat-width;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    height: 100%;
+    background: $white;
+    overflow-y: scroll;
+
+    .chat-username {
+      white-space: nowrap;
+      width: 80px;
+      overflow: hidden;
+      margin-right: 10px;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .blurry-text{
+      color: transparent;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+
+    ul {
+      padding-bottom: 100px;
+      li {
+        zoom: 0.9;
+        border: none;
+        border-bottom: 1px solid $grey100;
+        padding: 10px;
+        &.online{
+          i{
+            color: $brand-success;
+          }
+        }
+        i{
+          font-size: 8px;
+          color: $grey400;
+        }
+        &:last-child{
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  #chat {
+    display: none;
+  }
+}

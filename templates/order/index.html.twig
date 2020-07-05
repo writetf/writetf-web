@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order{% endblock %}
+
+{% block body_id 'order-index' %}
+
+{% block main %}
+    <div class="order">
+        <h5 class="title">My Orders</h5>
+        <div class="detail">
+            <div class="item">
+                <div class="left">
+                    <div class="thumbnail">
+                        <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg">
+                    </div>
+                    <div class="left-info">
+                        <div class="item-title"><span>#124124</span></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="status waiting"><span>Waiting</span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="left">
+                    <div class="thumbnail">
+                        <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg">
+                    </div>
+                    <div class="left-info">
+                        <div class="item-title"><span>#124124</span></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="status processing"><span>Processing</span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="left">
+                    <div class="thumbnail">
+                        <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg">
+                    </div>
+                    <div class="left-info">
+                        <div class="item-title"><span>#124124</span></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="status rejected"><span>Rejected</span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="left">
+                    <div class="thumbnail">
+                        <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg">
+                    </div>
+                    <div class="left-info">
+                        <div class="item-title"><span>#124124</span></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="status shipping"><span>Shipping</span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="left">
+                    <div class="thumbnail">
+                        <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg">
+                    </div>
+                    <div class="left-info">
+                        <div class="item-title"><span>#124124</span></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="status success"><span>Success</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,81 @@
+@import "theme.default.light";
+
+.order {
+  .title {
+    font-size: 17px;
+    background: #f7f7f7;
+    padding: 12px;
+    margin: 0;
+    font-weight: bold;
+    border-bottom: 3px solid #f1f1f1;
+  }
+
+  .status {
+    background: #6d6d6d;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+
+    &.waiting {
+      background: $primary;
+    }
+
+    &.processing {
+      background: #004d87;
+    }
+
+    &.shipping {
+      background: #2196F3;
+    }
+
+    &.rejected {
+      background: #cc2425;
+    }
+
+    &.success {
+      background: #00bb00;
+    }
+  }
+
+  .detail {
+    background: white;
+    padding: 12px;
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+
+      .left {
+        display: flex;
+        align-items: center;
+
+        .left-info {
+          margin-left: 12px;
+
+          .item-title {
+            font-weight: bold;
+          }
+        }
+
+        .thumbnail {
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+          }
+        }
+      }
+    }
+  }
+}

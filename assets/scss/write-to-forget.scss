@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url(../fonts/Quicksand-VariableFont_wght.ttf);
+}
+
+#write-to-forget-index {
+  max-width: 1024px;
+  background: #F8F5F2;
+  color: #454545;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Quicksand', serif;
+
+  header {
+    background: #f8f5f2;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1024px;
+    align-items: center;
+    height: auto;
+    position: sticky;
+    padding: 15px 0;
+  }
+
+  .forget {
+    #btn-forget {
+
+      &:hover {
+        background: #8b5ed0;
+      }
+
+      display: none;
+      background: #7446B9;
+      padding: 5px 20px;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      box-shadow: 0 3px 0 0 #5F4389;
+      outline: none;
+    }
+  }
+
+  a {
+    color: #454545;
+
+    :hover {
+      color: #454545;
+    }
+  }
+
+  .logo-wtf {
+
+    h1 {
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+      display: flex;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      align-items: center;
+
+      span {
+        margin-left: 3px;
+      }
+    }
+
+    img {
+      width: 35px;
+    }
+  }
+}
+
+#write-to-forget-editor {
+
+  margin-top: 75px;
+  font-size: 25px;
+  padding: 25px;
+
+  #textarea-forget {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    resize: none;
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 720px) {
+  #write-to-forget-editor {
+    padding: 0;
+  }
+}

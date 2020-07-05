@@ -1,0 +1,158 @@
+<div id="post-{{ post.id }}" class="card">
+    <div class="card-body p-0">
+        {% if post.latestComment %}
+            <div class="card-header" style="padding: 10px 15px;">
+                <div class="post-top">
+                    <a class="font-weight-bolder"
+                       href="{{ path('blog_user_index', {userSlug: post.latestComment.author.slug}) }}">{{ post.latestComment.author.displayText }}</a>
+                    commented.
+                </div>
+            </div>
+        {% endif %}
+        <div class="card-header">
+            <div class="post-info-left">
+                {{ include('blog/_avatar.html.twig', {user:post.author}) }}
+                <div class="post-info-block">
+                    <div class="post-info-top-block">
+                        <a style="white-space: nowrap" class="font-weight-bolder{% if "ROLE_ADMIN" in post.author.roles %} username-admin{% endif %}" href="{{ path('blog_user_index', {userSlug: post.author.slug}) }}">{{ post.author.displayText }}</a>
+                        {% if post.community is not null %}
+                            <span style="margin-left: 5px; margin-right: 5px; font-size: 10px"><i class="fas fa-caret-right"></i></span>
+                            <div class="community-name">
+                                <span><a class="font-weight-bolder" href="{{ path('blog_community_index', {'slug': post.community.slug}) }}">{{ post.community.displayText }}</a></span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="text-muted" style="display: flex;align-items: center;">
+                        {% if isList is defined %}
+                        <a href="{{ path('blog_post', {id: post.id}) }}" class="post-detail-link"
+                           style="margin-right: 5px">{{ post.publishedAt|ago }}</a> <i
+                                class="fas fa-globe-asia" style="font-size: 12px"></i>
+                        {% else %}
+                            <span>{{ post.publishedAt|date("F j, Y \\a\\t H:i") }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="post-info-right">
+                <div class="dropdown-group">
+                    <button class="btn-dropdown btn-util"><i class="fas fa-ellipsis-h"></i></button>
+                    <div class="dropdown-data post-actions">
+                        <div class="list-group">
+                            <div class="list-group-item"><a href="#" class="btn"><i class="far fa-flag"></i> Report</a></div>
+{#                            <div class="list-group-item"><a href="#" class="btn"><i class="far fa-bookmark"></i> Save post</a></div>#}
+{#                            <div class="list-group-item"><a href="#" class="btn"><i class="far fa-bell"></i> Turn on notifications for this post</a></div>#}
+{#                            <div class="list-group-item"><a href="#" class="btn"><i class="far fa-edit"></i> Edit</a></div>#}
+{#                            <div class="list-group-item"><a href="#" class="btn delete"><i class="far fa-trash-alt"></i> Delete</a></div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-content">
+            {% if post.title|length > 0 %}
+                <div class="content">{{ post.title|md2html }}</div>
+            {% endif %}
+            {% if post.content|length > 0 %}
+                <div class="content">{{ post.content|md2html }}</div>
+            {% endif %}
+        </div>
+        {% if post.thumbnail is not null %}
+            <div class="post-thumbnail">
+                {% if isList is defined %}
+                <a href="{{ path('blog_post', {id: post.id}) }}"><img src="{{ post.thumbnail }}" alt="{{ post.titleDisPlay }}" title="{{ post.titleDisPlay }}"
+                     style="width: 100%;"></a>
+                {% else %}
+                <img src="{{ post.thumbnail }}" alt="{{ post.titleDisPlay }}" title="{{ post.titleDisPlay }}"
+                     style="width: 100%;">
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="card-footer post-meta-data">
+            <div class="card-footer-left">
+                <span id="love-{{ post.id }}" class="btn-love {% if post.love|length > 0 %}btn-loved{% endif %}">
+                    <i class="fas fa-heart"></i>
+                    <span class="btn-love-count" id="btn-love-count-{{ post.id }}">{{ post.love|length }}</span>
+                </span>
+            </div>
+            <div class="card-footer-right">
+                {% if isList is defined %}
+                <a href="{{ path('blog_post', {id: post.id}) }}" class="text-decoration-none"
+                   style="display:block; width: 100%;">
+                    <span>{{ 'post.num_comments'|trans({ 'count': post.comments|length }) }}</span>
+                    <span class=" ml-1">•</span>
+                    <span class="ml-1">{{ 'post.num_views'|trans({ 'count': post.views|length }) }}</span>
+                </a>
+                {% else %}
+                    <span>
+                                        {{ 'post.num_comments'|trans({ 'count': post.comments|length }) }}
+                                    </span>
+                    <span class=" ml-1">•</span>
+                    <span class="ml-1">
+                                        {{ 'post.num_views'|trans({ 'count': post.views|length }) }}
+                                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="post-utils">
+            <div class="left">
+                <button class="btn btn-default" data-post-id="{{ post.id }}" onclick="window.love(this)"><i class="far fa-heart"></i> Love</button>
+            </div>
+            <div class="center">
+                {% if isList is defined %}
+                <a href="{{ path('blog_post', {id: post.id}) }}" class="btn btn-default"><i class="far fa-comment-alt"></i> Comment</a>
+                {% else %}
+                    <a href="#comment-content-{{ post.id }}" class="btn btn-default"><i class="far fa-comment-alt"></i> Comment</a>
+                {% endif %}
+
+            </div>
+            <div class="right">
+                <button class="btn btn-default"><i class="far fa-share-square"></i> Share</button>
+            </div>
+        </div>
+{#        {% if app.environment == 'prod' %}#}
+{#            <div class="ads" style="margin: 20px auto!important;">#}
+{#                <!-- Horizontal -->#}
+{#                <ins class="adsbygoogle"#}
+{#                     style="display:block"#}
+{#                     data-ad-client="ca-pub-7239842536007968"#}
+{#                     data-ad-slot="8524625882"#}
+{#                     data-ad-format="auto"#}
+{#                     data-full-width-responsive="true"></ins>#}
+{#                <script>#}
+{#                  (adsbygoogle = window.adsbygoogle || []).push({});#}
+{#                </script>#}
+{#            </div>#}
+{#        {% endif %}#}
+        <div class="comments">
+            {% for comment in comments %}
+                {% if comment.parent is null %}
+                {{ include('blog/_comment_item.html.twig', {
+                    comment: comment,
+                    post: post
+                }) }}
+                {% endif %}
+            {% else %}
+               <div class="no-comments">
+                   <i class="fas fa-comments"></i>
+                   <p class="sub-comment">Be the first to comment.</p>
+               </div>
+            {% endfor %}
+        </div>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="comment-form">
+                {{ render(controller('App\\Controller\\CommentController::commentForm', {'id': post.id, 'reply': false, parent: ''})) }}
+            </div>
+        {% else %}
+            <div class="login-to-comment">
+                <span>
+                    <a class="btn btn-sm btn-primary" style="margin-right: 5px"
+                       href="{{ path('security_login', {'redirect_to': app.request.pathInfo}) }}">
+                        {{ 'action.sign_in'|trans }}
+                    </a>
+                    {{ 'post.to_publish_a_comment'|trans }}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+</div>

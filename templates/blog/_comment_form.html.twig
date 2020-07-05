@@ -1,0 +1,26 @@
+{{ form_start(form, {method: 'POST', action: path('comment_new', {'postId': post.id}), attr: { class: 'formComment'}}) }}
+
+<div class="form-errors"><span class="text-danger">{{ form_errors(form.content) }}</span></div>
+<div class="comment-block">
+    <div class="comment-form-input">
+        <div class="chat-avatar">{{ include('blog/_avatar.html.twig', {user:app.user}) }}</div>
+        <div class="input-comment">
+            {% if parent is defined and parent is not empty %}
+                {% set inputId = post.id ~ '-' ~ parent %}
+            {% else %}
+                {% set inputId = post.id %}
+            {% endif %}
+            {{ form_widget(form.content, {id:'comment-content-'~ inputId,attr: {rows: 1, placeholder: reply ? 'Write a reply...' : 'Write a comment...'}}) }}
+            {{ form_widget(form._token, {id:'comment-token-'~ inputId}) }}
+            {{ form_widget(form.parent, {value:parent}) }}
+        </div>
+    </div>
+    {#    <div class="btn-utils">#}
+    {#        <button type="submit"><i class="fas fa-paper-plane"></i></button>#}
+    {#    </div>#}
+    <div class="dropdown-group emoji-group">
+        <button type="button"><i class="far fa-smile"></i></button>
+        <div id="emoji-{{ post.id }}" class="dropdown-data emoji"></div>
+    </div>
+</div>
+{{ form_end(form) }}

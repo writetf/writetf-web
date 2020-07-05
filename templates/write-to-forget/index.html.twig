@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Write to forget{% endblock %}
+{% block description %}What is on your mind right now...{% endblock %}
+{% block og_image %}https://writetf.com/images/forget.png{% endblock %}
+{% block og_image_alt %}Write to forget{% endblock %}
+{% block ogImageWidth %}1200{% endblock %}
+{% block ogImageHeight %}630{% endblock %}
+
+{% block body_id 'write-to-forget-index' %}
+
+{% block header %}
+    <header>
+        <div class="logo-wtf">
+            <a href="{{ path('home_index') }}">
+                <h1><img src="/logo.png" alt="Write to forget"><span>Write to forget</span>
+                </h1>
+            </a>
+        </div>
+        <div class="forget">
+            <button id="btn-forget" onclick="forget()"><i class="fas fa-trash-alt"></i> Forget!</button>
+        </div>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <div id="write-to-forget-editor">
+        <textarea id="textarea-forget" onkeyup="textAreaAdjust(this)" style="overflow:hidden"
+                  placeholder="What is on your mind right now..." autofocus spellcheck="false" rows="5"></textarea>
+    </div>
+    <script>
+      function textAreaAdjust(e) {
+        if (e.value.length > 10) {
+          const btnForget = document.getElementById('btn-forget');
+          btnForget.style.display = 'block';
+        }
+
+      }
+
+      function forget() {
+        const textareaForget = document.getElementById('textarea-forget');
+        textareaForget.value = '';
+        textareaForget.focus();
+        textareaForget.select();
+        const btnForget = document.getElementById('btn-forget');
+        btnForget.style.display = 'none';
+      }
+    </script>
+{% endblock %}
+{% block out_side_left %}{% endblock %}
+{% block ads %}{% endblock %}

@@ -1,0 +1,17 @@
+{
+  "description": "Write to forget.",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    }
+  ],
+  "name": "Writetf",
+  "short_name": "Writetf",
+  "start_url": "/",
+  "background_color": "#563d7b",
+  "theme_color": "#2b1848",
+  "display": "standalone",
+  "orientation": "portrait"
+}

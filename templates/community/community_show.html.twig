@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'community_show' %}
+
+{% block main %}
+    <h1>{{ community.name }}</h1>
+    <p>{{ community.description }}</p>
+{% endblock %}
+
+{% block sidebar_right %}
+    {{ parent() }}
+{% endblock %}

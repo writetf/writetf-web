@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Writetf Coins{% endblock %}
+
+{% block body_id 'coin_index' %}
+
+{% block main %}
+    <div class="coins">
+        <div class="statics">
+            <div class="title">
+                <span>Writetf Coins</span>
+            </div>
+            <div class="data">
+                <div class="detail">
+                    <span class="number">123</span>
+                    <span class="text"><i class="fas fa-coins"></i></span>
+                </div>
+                <div class="description">
+                    <span>Current balance</span>
+                </div>
+            </div>
+        </div>
+        <div class="transactions">
+            <h5>Transactions history</h5>
+            <div class="list">
+                <div class="item receive">
+                    <div class="left">
+                        <div class="thumbnail">
+                            <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg" alt="" title="">
+                        </div>
+                        <div class="detail">
+                            <span class="title"><a href="#">Bank transfer</a></span>
+                            <span class="date">January 26, 2020 at 23:14</span>
+                            <span class="description">"Transfer from Vietcombank"</span>
+                        </div>
+                    </div>
+                    <div class="right amount"><span class="number">+50<i class="fas fa-coins"></i></span></div>
+                </div>
+                <div class="item send">
+                    <div class="left">
+                        <div class="thumbnail">
+                            <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg" alt="" title="">
+                        </div>
+                        <div class="detail">
+                            <span class="title"><a href="#">Top-up</a></span>
+                            <span class="date">January 26, 2020 at 23:14</span>
+                            <span class="description">Operator: Viettel <br>Serial: 1224124 <br>Code: 1231231234</span>
+                        </div>
+                    </div>
+                    <div class="right amount"><span class="number">-20<i class="fas fa-coins"></i></span></div>
+                </div>
+                <div class="item receive">
+                    <div class="left">
+                        <div class="thumbnail">
+                            <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg" alt="" title="">
+                        </div>
+                        <div class="detail">
+                            <span class="title"><a href="#">Bank transfer</a></span>
+                            <span class="date">January 26, 2020 at 23:14</span>
+                            <span class="description">"Transfer from Vietcombank"</span>
+                        </div>
+                    </div>
+                    <div class="right amount"><span class="number">+100<i class="fas fa-coins"></i></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

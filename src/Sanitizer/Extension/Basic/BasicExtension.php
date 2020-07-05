@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Sanitizer\Extension\Basic;
+
+use HtmlSanitizer\Extension\ExtensionInterface;
+use App\Sanitizer\Extension\Basic\NodeVisitor\ANodeVisitor;
+use HtmlSanitizer\Extension\Basic\NodeVisitor;
+
+/**
+ * @final
+ */
+class BasicExtension implements ExtensionInterface
+{
+    public function getName(): string
+    {
+        return 'custom-basic';
+    }
+
+    public function createNodeVisitors(array $config = []): array
+    {
+        return [
+            'a' => new ANodeVisitor($config['tags']['a'] ?? []),
+            'blockquote' => new NodeVisitor\BlockquoteNodeVisitor($config['tags']['blockquote'] ?? []),
+            'br' => new NodeVisitor\BrNodeVisitor($config['tags']['br'] ?? []),
+            'div' => new NodeVisitor\DivNodeVisitor($config['tags']['div'] ?? []),
+            'del' => new NodeVisitor\DelNodeVisitor($config['tags']['del'] ?? []),
+            'em' => new NodeVisitor\EmNodeVisitor($config['tags']['em'] ?? []),
+            'figcaption' => new NodeVisitor\FigcaptionNodeVisitor($config['tags']['figcaption'] ?? []),
+            'figure' => new NodeVisitor\FigureNodeVisitor($config['tags']['figure'] ?? []),
+            'h1' => new NodeVisitor\H1NodeVisitor($config['tags']['h1'] ?? []),
+            'h2' => new NodeVisitor\H2NodeVisitor($config['tags']['h2'] ?? []),
+            'h3' => new NodeVisitor\H3NodeVisitor($config['tags']['h3'] ?? []),
+            'h4' => new NodeVisitor\H4NodeVisitor($config['tags']['h4'] ?? []),
+            'h5' => new NodeVisitor\H5NodeVisitor($config['tags']['h5'] ?? []),
+            'h6' => new NodeVisitor\H6NodeVisitor($config['tags']['h6'] ?? []),
+            'i' => new NodeVisitor\INodeVisitor($config['tags']['i'] ?? []),
+            'p' => new NodeVisitor\PNodeVisitor($config['tags']['p'] ?? []),
+            'q' => new NodeVisitor\QNodeVisitor($config['tags']['q'] ?? []),
+            'small' => new NodeVisitor\SmallNodeVisitor($config['tags']['small'] ?? []),
+            'span' => new NodeVisitor\SpanNodeVisitor($config['tags']['span'] ?? []),
+            'strong' => new NodeVisitor\StrongNodeVisitor($config['tags']['strong'] ?? []),
+            'sub' => new NodeVisitor\SubNodeVisitor($config['tags']['sub'] ?? []),
+            'sup' => new NodeVisitor\SupNodeVisitor($config['tags']['sup'] ?? []),
+        ];
+    }
+}

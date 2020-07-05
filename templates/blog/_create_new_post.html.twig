@@ -1,0 +1,50 @@
+<div id="newPost">
+    <div class="header-form">
+        <span><i class="fas fa-edit"></i> Create a new post</span>
+    </div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ form_start(form, {method: 'POST', action: path('post_new')}) }}
+        <div id="newPostForm">
+            <div class="form-group">
+                {{ form_widget(form.title) }}
+                <div id="post-content" placeholder="What's on your mind, {{ app.user.displayText }}?" contenteditable="true"></div>
+                <div class="create-post-utils">
+                    <label class="custom-label image" for="customImage"><i class="fas fa-camera"></i></label>
+                    <div class="dropdown-group emoji-group">
+                        <button class="btn-emoji" type="button"><i class="far fa-smile"></i></button>
+                        <div id="emoji-create-post" class="dropdown-data emoji-box"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="preview">
+                <img id="imagePreview" style="width: 100%; height: 100%" src="" alt="">
+                <div id="upload-loading">
+                    <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <button id="close-preview" type="button"><i class="fas fa-times-circle"></i></button>
+            </div>
+            <input type="file" class="custom-file-input" id="customImage" role="button" accept="image/*">
+            <input type="hidden" name="communityId" value="{{ communityId }}">
+        </div>
+        <div id="btn-submit">
+            <button id="submit-post" type="submit" class="btn btn-sm btn-block">Post</button>
+        </div>
+        {{ form_end(form) }}
+    {% else %}
+        <div id="login-to-post">
+            <a href="{{ path('security_login') }}">What's on your mind?
+                <div class="post-btn"><span>Post</span></div>
+            </a>
+
+        </div>
+    {% endif %}
+</div>
+
+
+{{ encore_entry_link_tags('createPost') }}
+{{ encore_entry_script_tags('createPost') }}

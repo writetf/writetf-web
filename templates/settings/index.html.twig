@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block body_id 'settings-index' %}
+
+{% block main %}
+    <div class="settings">
+        <div class="setting-group">
+            <h5 class="title"><span>Account Settings</span></h5>
+            <div class="item">
+                <div class="item-detail username"><span class="label">Username</span><span>{{ app.user.username }}</span></div>
+
+                <div class="item-detail email"><span class="label">Email</span><span>{{ app.user.email }}</span></div>
+                <div class="item-detail profile-link"><span class="label">Profile link</span><span>https://writetf.com/u/{{ app.user.slug }}</span></div>
+{#                <div class="item-detail address">#}
+{#                    <span class="label">Address</span><span>Nga Tu 1, Ngai Hung, Tieu Can, Tra Vinh, Viet Nam</span>#}
+{#                </div>#}
+{#                <div class="item-detail country"><span class="label">Country</span><span>Vietnam</span></div>#}
+
+            </div>
+        </div>
+{#        <div class="setting-group">#}
+{#            <h5 class="title"><span>Security</span></h5>#}
+{#            <div class="item">#}
+{#                <div class="item-detail-title"><span>Change password</span></div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="setting-group">#}
+{#            <h5 class="title"><span>Blocking Users</span></h5>#}
+{#            <div class="item">#}
+{#                <div class="item-detail-title"><span>There are no users for blocking.</span></div>#}
+{#            </div>#}
+{#        </div>#}
+        <div class="logout">
+            <a class="btn btn-sm btn-danger btn-logout" href="{{ path('security_logout') }}">Logout</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

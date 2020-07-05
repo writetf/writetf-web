@@ -1,0 +1,10 @@
+twig:
+    debug: '%kernel.debug%'
+    default_path: '%kernel.project_dir%/templates'
+    strict_variables: '%kernel.debug%'
+    date:
+        timezone: Asia/Ho_Chi_Minh
+    form_themes:
+        - 'bootstrap_4_layout.html.twig'
+        - 'form/layout.html.twig'
+        - 'form/fields.html.twig'

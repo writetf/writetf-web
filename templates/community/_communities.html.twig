@@ -1,0 +1,25 @@
+{% for category in categories %}
+    {% if category.status == 'enable' %}
+        <h5 class="group-title-category">{{ category.name }}</h5>
+        <div class="groups-items">
+            {% for community in category.communities %}
+                {% if community.status == 'enable' %}
+                    {{ include('layout/community.html.twig', {
+                        community: community,
+                        following: true,
+                        detail: false
+                    }) }}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endfor %}
+
+{#<h5 class="group-title-category">All</h5>#}
+{#<div class="groups-items">#}
+{#    {% for community_item in communities %}#}
+{#    {{ include('layout/community.html.twig', {#}
+{#        community_item: community_item#}
+{#    }) }}#}
+{#    {% endfor %}#}
+{#</div>#}

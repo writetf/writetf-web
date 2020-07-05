@@ -1,0 +1,70 @@
+#wtf-ads {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 2px 20px 0 rgba(0,0,0,.2);
+  border-top: 1px solid #eee;
+
+  .modal-fullscreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 35px;
+    .btn-group{
+      align-items: center;
+    }
+  }
+
+  .text-description{
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .btn{
+    min-width: 260px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #9E9E9E;
+    margin: 0 12px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+
+    &.btn-login{
+      background: #323a40;
+    }
+    &.btn-register{
+      background: #42b72a;
+    }
+  }
+
+}
+
+@media (max-width: 600px) {
+  #wtf-ads{
+    .modal-fullscreen{
+      .btn-group{
+        flex-direction: column;
+      }
+    }
+    .text-description{
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .btn {
+      width: auto;
+      padding: 5px 20px;
+      height: auto;
+      font-size: 15px;
+      margin: 5px;
+    }
+  }
+}

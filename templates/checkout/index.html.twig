@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block body_id 'checkout-index' %}
+
+{% block main %}
+    <div class="checkout">
+        <h5 class="title">Checkout</h5>
+        <div class="item">
+            <h6 class="title">Shipping address</h6>
+            <div class="detail">
+                <div class="item-detail phone"><span class="label">Phone</span><input name="phone" type="text"
+                                                                                      value="+84906807975"></div>
+                <div class="item-detail email"><span class="label">Email</span><input type="email"
+                                                                                      value="ga9xvn@gmail.com"></div>
+                <div class="item-detail address">
+                    <span class="label">Address</span><input type="text"
+                                                             value="Nga Tu 1, Ngai Hung, Tieu Can, Tra Vinh, Viet Nam">
+                </div>
+                <div class="item-detail country"><span class="label">Country</span><input type="text" value="Vietnam">
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <h6 class="title">Review order</h6>
+            <div class="cart">
+                <div class="detail">
+                    <div class="item">
+                        <div class="left">
+                            <div class="number"><span>1x</span></div>
+                            <div class="thumbnail"><img
+                                        src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg"></div>
+                            <div class="left-info">
+                                <div class="item-title"><span>Ly sứ Viết Xong Xóa</span></div>
+                                <div class="information">
+                                    <div class="item-attribute"><span class="size-data">Size: XL</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="price"><span class="item-pricing-coin">12<i class="fas fa-coins"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="left">
+                            <div class="number"><span>124x</span></div>
+                            <div class="thumbnail"><img
+                                        src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg"></div>
+                            <div class="left-info">
+                                <div class="item-title"><span>Ly sứ Viết Xong Xóa</span></div>
+                                <div class="information">
+                                    <div class="item-attribute"><span class="size-data">Size: XL</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="price"><span class="item-pricing-coin">12<i class="fas fa-coins"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calculator">
+                    <div class="subtotal">
+                        <span class="label">Subtotal </span><span class="subtotal-number">1230<i
+                                    class="fas fa-coins"></i></span>
+                    </div>
+                    <div class="subtotal">
+                        <span class="label">Shipping fee </span><span class="subtotal-number">15<i
+                                    class="fas fa-coins"></i></span>
+                    </div>
+                    <div class="subtotal">
+                        <span class="label">Discount </span><span class="subtotal-number">-50<i
+                                    class="fas fa-coins"></i></span>
+                    </div>
+                    <div class="subtotal total">
+                        <span class="label">Total </span><span class="subtotal-number">1195<i
+                                    class="fas fa-coins"></i></span>
+                    </div>
+                </div>
+                <div class="place-order"><button class="btn btn-primary btn-sm">Place order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

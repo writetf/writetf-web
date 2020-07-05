@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'login' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('login') }}
+{% endblock %}
+
+{% block main %}
+    <div id="page-card" class="card-none-game">
+        <div class="card">
+            <div class="card-body p-4">
+                <h4 class="text-center">{{ 'title.login'|trans }}</h4>
+                {{ include('security/_login.html.twig', { action: path('security_login') }) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block sidebar_right %}
+{% endblock %}
+
+{% block sidebar_left %}
+{% endblock %}
+
+{% block ads %}
+{% endblock %}

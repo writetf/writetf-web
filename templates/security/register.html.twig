@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'register' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+
+    <div id="page-card" class="card-none-game">
+        <div class="card register">
+            <div class="card-body">
+                <h4 class="mb-4">{{ 'title.register'|trans }}</h4>
+                {{ form_start(form) }}
+                <div class="form-group {% if not form.username.vars.valid %}has-error{% endif %}">
+                    {{ form_widget(form.username) }}
+                    <span class="text-danger">{{ form_errors(form.username) }}</span>
+                </div>
+                <div class="form-group {% if not form.email.vars.valid %}has-error{% endif %}">
+                    {{ form_widget(form.email) }}
+                    <span class="text-danger">{{ form_errors(form.email) }}</span>
+                </div>
+                <div class="form-group {% if not form.password.vars.valid %}has-error{% endif %}">
+                    {{ form_widget(form.password) }}
+                    <span class="text-danger">{{ form_errors(form.password) }}</span>
+                </div>
+                <div class="form-group">
+                    <p class="">
+                        By clicking Create an account, you agree to our Terms and confirm that you have read our
+                        Data Policy, including our Cookie Use Policy.
+                    </p>
+                </div>
+                <input type="hidden" name="_target_path" value="{{ app.request.get('redirect') }}"/>
+                <button type="submit" class="btn btn-primary">
+                    {{ 'action.register'|trans }}
+                </button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block sidebar_right %}
+{% endblock %}
+
+{% block sidebar_left %}
+{% endblock %}

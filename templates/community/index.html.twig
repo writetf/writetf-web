@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Communities{% endblock %}
+
+{% block body_id 'community_index' %}
+
+{% block main %}
+{#    {% if app.environment == 'prod' %}#}
+{#        <div class="ads" style="margin: 20px auto!important;">#}
+{#            <!-- Horizontal -->#}
+{#            <ins class="adsbygoogle"#}
+{#                 style="display:block"#}
+{#                 data-ad-client="ca-pub-7239842536007968"#}
+{#                 data-ad-slot="8524625882"#}
+{#                 data-ad-format="auto"#}
+{#                 data-full-width-responsive="true"></ins>#}
+{#            <script>#}
+{#              (adsbygoogle = window.adsbygoogle || []).push({});#}
+{#            </script>#}
+{#        </div>#}
+{#    {% endif %}#}
+    {{ include('community/_communities.html.twig', {
+        categories: categories
+    }) }}
+{#    {% if app.environment == 'prod' %}#}
+{#        <div class="ads" style="margin: 20px auto!important;">#}
+{#            <!-- Horizontal -->#}
+{#            <ins class="adsbygoogle"#}
+{#                 style="display:block"#}
+{#                 data-ad-client="ca-pub-7239842536007968"#}
+{#                 data-ad-slot="8524625882"#}
+{#                 data-ad-format="auto"#}
+{#                 data-full-width-responsive="true"></ins>#}
+{#            <script>#}
+{#              (adsbygoogle = window.adsbygoogle || []).push({});#}
+{#            </script>#}
+{#        </div>#}
+{#    {% endif %}#}
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

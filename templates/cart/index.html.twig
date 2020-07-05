@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Cart{% endblock %}
+
+{% block body_id 'cart-index' %}
+
+{% block main %}
+    <div class="cart">
+        <h5 class="title">Cart</h5>
+        <div class="detail">
+            <div class="item">
+                <div class="left">
+                    <div class="thumbnail">
+                        <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg">
+                    </div>
+                    <div class="left-info">
+                        <div class="item-title"><span>Ly sứ Viết Xong Xóa</span></div>
+                        <div class="information">
+                            <div class="item-attribute"><span class="size-data">Size: XL</span></div>
+                        </div>
+                        <div class="item-utils">
+                            <button class="btn-del">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="number btn-group btn-group-sm" role="group">
+                        <button class="btn btn-outline-primary">-</button>
+                        <input type="number" name="number[1]" class="input-group-text" value="12">
+                        <button class="btn btn-outline-primary">+</button>
+                    </div>
+                    <div class="price"><span class="item-pricing-coin">12<i class="fas fa-coins"></i></span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="left">
+                    <div class="thumbnail">
+                        <img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg">
+                    </div>
+                    <div class="left-info">
+                        <div class="item-title"><span>Ly sứ Viết Xong Xóa</span></div>
+                        <div class="information">
+                            <div class="item-attribute"><span class="size-data">Size: XL</span></div>
+                        </div>
+                        <div class="item-utils">
+                            <button class="btn-del">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="number btn-group btn-group-sm" role="group">
+                        <button class="btn btn-outline-primary">-</button>
+                        <input type="number" name="number[1]" class="input-group-text" value="12">
+                        <button class="btn btn-outline-primary">+</button>
+                    </div>
+                    <div class="price"><span class="item-pricing-coin">12<i class="fas fa-coins"></i></span></div>
+                </div>
+            </div>
+            <div class="subtotal"><span class="label">Subtotal </span><span class="subtotal-number">1230<i class="fas fa-coins"></i></span></div>
+            <div class="checkout"><a href="{{ path('checkout_index') }}" class="btn btn-primary btn-sm">Process to checkout</a> </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

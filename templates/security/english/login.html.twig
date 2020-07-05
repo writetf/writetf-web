@@ -1,0 +1,25 @@
+{% extends 'english/base.html.twig' %}
+
+{% block body_class 'login' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('login') }}
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+    <div id="form-login">
+        {{ include('security/_login.html.twig', { action: path('security_english_login') }) }}
+    </div>
+{% endblock %}
+
+{% block sidebar_right %}
+{% endblock %}
+
+{% block sidebar_left %}
+{% endblock %}
+
+{% block ads %}
+{% endblock %}

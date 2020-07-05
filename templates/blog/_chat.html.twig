@@ -1,0 +1,23 @@
+<div id="chat">
+    <ul class="list-group">
+        {% for user in users %}
+            <li class="list-group-item online">
+                <div class="chat-avatar">{{ include('blog/_avatar.html.twig', {user:user}) }}</div>
+                <div class="chat-username">
+                    <a href="{{ path('blog_user_index', {userSlug: user.slug}) }}"
+                       class="text-decoration-none">
+                        {{ user.displayText|length > 20   ? user.displayText|slice(0, 20 ) ~ '...' : user.displayText }}
+                    </a>
+                </div>
+                <i class="fas fa-circle"></i>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('chat') }}
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('chat') }}
+{% endblock %}

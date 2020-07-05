@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id %}{% if community is not null %}community{% elseif user is not null %}user{% else %}index{% endif %}{% endblock %}
+
+{% block title %}{% if community is not null %}{{ community.displayText }}{% elseif user is not null %}{{ user.username }}{% else %}What's new{% endif %}{% endblock %}
+{% block description %}{% if community is not null %}{{ community.description }} - Writetf{% else %}{{ parent() }}{% endif %}{% endblock %}
+
+{% block og_title %}{% if community is not null %}{{ community.displayText }} - Writetf{% else %}{{ parent() }}{% endif %}{% endblock %}
+{% block og_description %}{% if community is not null %}{{ community.description }} - Writetf{% else %}{{ parent() }}{% endif %}{% endblock %}
+
+
+{% block og_image %}{% if community is not null %}{{ community.cover }}{% else %}{{ parent() }}{% endif %}{% endblock %}
+{% block og_image_alt %}{% if community is not null %}{{ community.description }}{% else %}{{ parent() }}{% endif %}{% endblock %}
+
+{% block ogImageWidth %}{% if community is not null %}{{ coverWidth }}{% else %}{{ parent() }}{% endif %}{% endblock %}
+{% block ogImageHeight %}{% if community is not null %}{{ coverHeight }}{% else %}{{ parent() }}{% endif %}{% endblock %}
+
+{% block main %}
+    {% if community is not null %}
+        {{ include('layout/community.html.twig', {
+            community_item: community,
+            displayCover: true,
+            following: true
+        }) }}
+    {% endif %}
+    {% if user is not null %}
+        {{ include('blog/_personal_cover.html.twig', {user: user}) }}
+    {% endif %}
+    {{ render(controller('App\\Controller\\PostController::postForm', {community: community})) }}
+    <div id="posts">
+        {{ include('blog/_post_list.html.twig', {paginator: paginator}) }}
+    </div>
+    <div id="loading-wrapper" class="mb-4 mt-4">
+        <div id="post-loading"></div>
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

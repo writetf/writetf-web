@@ -1,0 +1,18 @@
+$white: #ffffff;
+$brand-primary: #0a0233 !default;
+$primary: $brand-primary;
+$background-snow: $primary url("../images/snow.gif") repeat;
+$background: $background-snow;
+$text-color: $white;
+
+body {
+  color: $white;
+  background: $background;
+  position: relative;
+}
+
+
+header{
+  border-bottom: 1px solid #09022f;
+  box-shadow: 0 1rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body_id 'product-detail' %}
+
+{% block main %}
+    <div class="product">
+        <h5 class="title">Product detail</h5>
+        <div class="detail">
+            <div class="thumbnail"><img src="https://writetf.com/upload/images/ihyzqt6v1ha/5e2d72b032d4b.jpeg" alt="" title="" /> </div>
+            <div class="product-detail">
+                <div class="product-title"><h1>Ly sứ Viết Xong Xóa</h1></div>
+                <div class="price"><span class="item-pricing-coin">100 <i class="fas fa-coins"></i></span></div>
+                <div class="btn-buy"><button class="btn btn-primary btn-sm">Buy</button></div>
+            </div>
+        </div>
+        <h5 class="title next-title">Product description</h5>
+        <div class="detail">
+            <div class="description"><span class="item-description">Được làm bằng chất liệu sứ cao cấp, chịu nóng lạnh rất tốt</span></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,18 @@
+html_sanitizer:
+    default_sanitizer: 'default'
+    sanitizers:
+        default:
+            # Read https://github.com/tgalopin/html-sanitizer/blob/master/docs/1-getting-started.md#extensions
+            # to learn more about which extensions you would like to enable.
+            extensions:
+                - 'list'
+                - 'table'
+                - 'code'
+                - 'custom-image'
+                - 'custom-basic'
+            tags:
+                img:
+                    allow_data_uri: true
+                    allowed_hosts: null
+                    allow_relative_links: true
+                    allowed_attributes: ['width','height']

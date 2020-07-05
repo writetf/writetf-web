@@ -1,0 +1,10 @@
+{% set isList = true %}
+{% for post in paginator.results %}
+    {{ include('blog/_post_detail.html.twig', {post: post, comments:post.comments, isList: true}) }}
+{% else %}
+    <div id="no-post-found" class="card">
+        <div class="card-body">
+            {{ 'post.no_posts_found'|trans }}
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,60 @@
+@import "theme.default.light";
+
+.store {
+  .store-item {
+
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+
+    .item-left {
+      display: flex;
+      align-items: center;
+
+      a.item-title {
+        text-decoration: none;
+
+        h5 {
+          font-size: 15px;
+          color: #2b2c2e;
+        }
+      }
+
+      .item-image {
+        img {
+          width: 65px;
+          height: 65px;
+          border-radius: 10px;
+        }
+      }
+
+      .item-pricing {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: red;
+
+        .item-pricing-money {
+          margin-left: 12px;
+        }
+      }
+
+      .item-detail {
+        margin-left: 12px;
+      }
+
+      .item-description{
+        color: #616161;
+        font-size: 13px;
+      }
+    }
+
+
+    .item-actions {
+      margin-left: 12px;
+    }
+  }
+
+}

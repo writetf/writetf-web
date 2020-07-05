@@ -1,0 +1,268 @@
+@import "theme.default.light";
+
+.comment-form,
+.comments {
+
+  textarea[name='comment[content]'] {
+    border-radius: 20px;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 10px 12px;
+    resize: none;
+  }
+
+  .btn-utils{
+    button{
+      background: transparent;
+      border: none;
+      color: $primary;
+      outline: none;
+      font-size: 25px;
+      box-shadow: none;
+    }
+  }
+
+}
+
+.comments {
+  list-style: none;
+  padding: 12px 0;
+  margin: 0 auto;
+  background: #fff;
+
+
+  .comment-item {
+    display: flex;
+
+    .comment-post-info-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+
+      .comment-reply {
+        padding-bottom: 6px;
+
+        .comment-block {
+          padding: 0;
+          .btn-utils{
+            button{
+              font-size: 20px;
+            }
+          }
+        }
+
+        .avatar-block {
+          width: 30px;
+          height: 30px;
+
+          a {
+            span {
+              font-size: 11px
+            }
+          }
+        }
+      }
+
+      .comment-reply {
+        textarea[name='comment[content]'] {
+          padding: 6px 12px;
+        }
+
+        .text-avatar {
+          font-size: 10px;
+        }
+      }
+
+      .comment-reply-data {
+
+        .avatar-block {
+          width: 30px;
+          height: 30px;
+
+          a {
+            span {
+              font-size: 11px
+            }
+          }
+        }
+
+        .text-avatar {
+          font-size: 11px;
+        }
+
+        .comment-reply-item {
+          display: flex;
+        }
+      }
+
+      .comment-data {
+        width: fit-content;
+        position: relative;
+
+        .love-comment {
+          position: absolute;
+          bottom: 15px;
+          right: 1px;
+          box-shadow: 0 1px 3px 0 #ddd;
+          padding: 1px 5px;
+          font-size: 12px;
+          background: #fff;
+          border-radius: 10px;
+          color: #fa3e3f;
+        }
+
+        .comment-content {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          word-break: break-word;
+          overflow: hidden;
+          width: fit-content;
+
+          .comment-data-left {
+          }
+
+          &.loved {
+            .comment-data-left {
+              padding-bottom: 0;
+              padding-right: 0;
+            }
+          }
+
+          .comment-content-data {
+            background: #f2f3f5;
+            border-radius: 5px;
+            padding: 10px;
+            min-width: 210px;
+
+            a {
+              color: $link-color;
+            }
+
+            span.data {
+              margin-left: 3px;
+              white-space: pre-wrap;
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.comment-utils-dropdown {
+  padding-top: 3px;
+  padding-left: 10px;
+
+  .dropdown-group {
+    .btn-util {
+      margin-left: 0;
+
+      i {
+        color: #9E9E9E;
+      }
+    }
+
+    .post-actions {
+      .list-group {
+        right: 0;
+      }
+    }
+  }
+}
+
+.no-comments {
+  color: #6c757c;
+  text-align: center;
+  padding: 12px;
+
+  i {
+    font-size: 25px;
+  }
+
+  .sub-comment {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+}
+
+.login-to-comment {
+  padding: 12px;
+  border-top: 1px solid #f2f3f5;
+}
+
+.card-comment {
+  padding: 6px 12px 0;
+
+  .content {
+    padding: 12px;
+  }
+
+  .comment-avatar-wrapper {
+    .avatar-block {
+      width: 37px;
+      height: 37px;
+    }
+  }
+
+  .comment-utils {
+    margin-left: 10px;
+    margin-bottom: 3px
+  }
+}
+
+
+form.formComment {
+  margin: 0 auto;
+
+  .input-comment {
+    width: 100%;
+    position: relative;
+  }
+
+  input[name="comment[content]"] {
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background: #00000008;
+    padding-right: 35px;
+  }
+
+  .comment-block {
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+
+    .comment-form-input {
+      display: flex;
+      width: 100%;
+    }
+
+    .emoji-group {
+      margin: 0 0 0 12px;
+      position: relative;
+
+    }
+  }
+}
+
+.comment-form {
+  border-top: 1px solid #f7f7f7;
+}
+
+
+.form-errors {
+  background: #fff;
+
+  margin-bottom: 0;
+
+  .list-unstyled {
+    padding: 12px 12px 0;
+    margin: 0;
+  }
+}
+

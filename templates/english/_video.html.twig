@@ -1,0 +1,21 @@
+<div id="video-wrapper">
+    {% if video.type == 'mp4' %}
+        <video id="video" class="video-js" preload="metadata" poster="{{ video.thumbnail }}" controls>
+            <source src="{{ video.uri }}" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    {% else %}
+        <iframe id="video" src="{{ video.uri }}" height="315" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% endif %}
+</div>
+<div id="main">
+    <div id="video-description">
+        <h2>{{ video.name }}</h2>
+        <p class="description">{{ video.description }}</p>
+    </div>
+    <div id="next">
+        <h2>Up next</h2>
+        {{ include('english/_list_videos.html.twig', {videos: video.englishCategory.englishVideos, exclude: video} ) }}
+    </div>
+</div>

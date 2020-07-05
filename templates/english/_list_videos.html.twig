@@ -1,0 +1,18 @@
+<ul class="list-view videos">
+    {% for item in videos %}
+        {% if exclude is not defined or exclude.id != item.id %}
+        <li class="list-item video">
+            <a href="{{ path('english_video_detail', {id: item.id} ) }}">
+                <div class="thumbnail">
+                    <img src="{{ item.thumbnail }}" alt="thumbnail">
+                    <div class="duration">{{ item.duration }}</div>
+                </div>
+                <div class="data">
+                    <h2>{{ item.name }}</h2>
+                    <p>{{ item.description }}</p>
+                </div>
+            </a>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>

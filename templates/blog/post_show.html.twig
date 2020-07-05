@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'blog_post_show' %}
+
+{% block title %}{{ post.titleDisPlay|raw }}{% endblock %}
+
+{% block description %}{{ post.descriptionDisplay|raw }}{% endblock %}
+
+{% block og_title %}{{ post.titleDisPlay }}{% endblock %}
+{% block og_description %}{{ post.descriptionDisplay }}{% endblock %}
+
+{% block og_image %}{% if post.thumbnail is not null %}https://writetf.com{{ post.thumbnail }}{% else %}https://writetf.com/logo.png{% endif %}{% endblock %}
+{% block og_image_alt %}{% if post.titleDisPlay is not null %}{{ post.titleDisPlay }}{% else %}A new post from Writetf{% endif %}{% endblock %}
+
+{% block ogImageWidth %}{{ thumbnailWidth }}{% endblock %}
+{% block ogImageHeight %}{{ thumbnailHeight }}{% endblock %}
+
+
+{% block before_main %}
+{% endblock %}
+
+{% block main %}
+    <div id="post-show">
+        <div class="seo-title"><span><i class="fas fa-quote-left"></i></span><a href="{{ path('blog_post', {id: post.id}) }}"><h1>{{ post.titleDisPlay|raw }}</h1></a></div>
+        {{ include('blog/_post_detail.html.twig', {post:post, comments:comments}) }}
+    </div>
+{% endblock %}
+
+{% block chat %}
+    {{ render(controller('App\\Controller\\ChatController::chatList')) }}
+{% endblock %}
+
+{% block sidebar_right %}
+{% endblock %}
+
+{% block sidebar_left %}
+    {{ parent() }}
+{% endblock %}

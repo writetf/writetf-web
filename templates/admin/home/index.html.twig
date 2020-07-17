@@ -1,0 +1,31 @@
+{% extends 'admin/dashboard.html.twig' %}
+
+{% block main_title %}Dashboard{% endblock %}
+
+{% block main_body %}
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ postsCount }} <small
+                            class="text-muted"> {% if postsCount == 1 %}post{% else %}posts{% endif %}</small></h1>
+                <a class="btn text-primary" href="#">Create new post</a>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ categoriesCount }} <small
+                            class="text-muted"> {% if categoriesCount == 1 %}category{% else %}categories{% endif %}</small>
+                </h1>
+                <a class="btn text-primary" href="#">Create new category</a>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ bannersCount }} <small
+                            class="text-muted"> {% if bannersCount == 1 %}banner{% else %}banners{% endif %}</small>
+                </h1>
+                <a class="btn text-primary" href="#">Create new banner</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

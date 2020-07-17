@@ -1,0 +1,27 @@
+header.blog-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'left center right';
+
+}
+
+.btn-login {
+    grid-area: right;
+    text-align: right;
+}
+
+.blog-header-logo {
+    grid-area: left;
+    text-align: left;
+    font-size: 20px;
+}
+
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+}
+
+.blog-footer p:last-child {
+    margin-bottom: 0;
+}

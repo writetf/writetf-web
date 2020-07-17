@@ -1,0 +1,50 @@
+{% extends 'admin/dashboard.html.twig' %}
+
+{% block main_title %}English{% endblock %}
+
+{% block main_body %}
+    <div class="mb-3">
+        <a type="button" class="btn btn-primary" href="{{ path('admin_post_create') }}">Create new post</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Thumbnail</th>
+            <th scope="col">Category</th>
+            <th scope="col">Tile</th>
+            <th scope="col">Description</th>
+            <th scope="col">Audio</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>
+                    {% if post.thumbnail is not null %}
+                        <a href="{{ post.thumbnail.path }}" target="_blank">
+                            <img src="{{ post.thumbnail.path }}" width="50" alt="">
+                        </a>
+                    {% endif %}
+                </td>
+                <td>{{ post.category.name }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.description }}</td>
+                <td>
+                    {% if post.audio is not null %}
+                        <a href="{{ post.audio.path }}" target="_blank">{{ post.audio.path }}</a>
+                    {% endif %}
+                <td>
+                    <a href="{{ path('admin_post_update', {id: post.id}) }}" class="btn btn-secondary btn-sm">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7" class="text-center">No posts found.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Admin{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-4.3.1/css/bootstrap.min.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="{% block body_class %}body{% endblock %}">
+{% block body %}{% endblock %}
+<script src="{{ asset('assets/js/jquery-3.2.1.slim.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

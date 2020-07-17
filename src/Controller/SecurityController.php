@@ -147,7 +147,7 @@ class SecurityController extends AbstractController
      * But, this will never be executed. Symfony will intercept this first
      * and handle the logout automatically. See logout in config/packages/security.yaml
      *
-     * @Route("/logout", name="security_logout")
+     * @Route("/logout", name="security_logout", methods={"POST"})
      */
     public function logout(): void
     {

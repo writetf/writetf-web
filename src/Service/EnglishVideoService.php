@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
-use App\Entity\EnglishVideo;
+use App\Entity\Video;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\EnglishCategoryRepository;
+use App\Repository\VideoCategoryRepository;
 
 class EnglishVideoService
 {
@@ -14,7 +14,7 @@ class EnglishVideoService
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        EnglishCategoryRepository $englishCategoryRepository
+        VideoCategoryRepository $englishCategoryRepository
     ) {
         $this->entityManager = $entityManager;
         $this->englishCategoryRepository = $englishCategoryRepository;
@@ -27,9 +27,9 @@ class EnglishVideoService
         $description = $request->get('description');
         $duration = $request->get('duration');
         $hash = $request->get('hash');
-        $englishVideo = new EnglishVideo();
+        $englishVideo = new Video();
         $englishCategory = $this->englishCategoryRepository->find($categoryId);
-        $englishVideo->setEnglishCategory($englishCategory);
+        $englishVideo->setVideoCategory($englishCategory);
         $englishVideo->setType('youtube');
         $englishVideo->setName($name);
         $englishVideo->setDescription($description);
@@ -41,7 +41,7 @@ class EnglishVideoService
     }
 
     /**
-     * @param EnglishVideo $englishVideo
+     * @param Video $englishVideo
      * @param Request $request
      */
     public function update($englishVideo, Request $request)
@@ -54,7 +54,7 @@ class EnglishVideoService
         $type = $request->get('type');
         $uri = $request->get('uri');
         $englishCategory = $this->englishCategoryRepository->find($categoryId);
-        $englishVideo->setEnglishCategory($englishCategory);
+        $englishVideo->setVideoCategory($englishCategory);
         $englishVideo->setType($type);
         $englishVideo->setName($name);
         $englishVideo->setDescription($description);

@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin\Home;
 
-use App\Repository\EnglishVideoRepository;
-use App\Repository\EnglishCategoryRepository;
+use App\Repository\VideoRepository;
+use App\Repository\VideoCategoryRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,13 +16,13 @@ class IndexController extends AbstractController
 {
     /**
      * @Route("", methods={"GET"}, name="admin_home_index")
-     * @param EnglishCategoryRepository $englishCategoryRepository
-     * @param EnglishVideoRepository $englishVideoRepository
+     * @param VideoCategoryRepository $englishCategoryRepository
+     * @param VideoRepository $englishVideoRepository
      * @return Response
      */
     public function index(
-        EnglishCategoryRepository $englishCategoryRepository,
-        EnglishVideoRepository $englishVideoRepository
+        VideoCategoryRepository $englishCategoryRepository,
+        VideoRepository $englishVideoRepository
     ): Response {
         return $this->render(
             'admin/home/index.html.twig',

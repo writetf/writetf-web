@@ -4,13 +4,14 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EnglishCategoryRepository")
- * @ORM\Table(name="english_category")
+ * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
+ * @ORM\Table(name="video")
  */
-class EnglishCategory
+class Video
 {
     /**
      * @var string
@@ -30,7 +31,7 @@ class EnglishCategory
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -38,10 +39,24 @@ class EnglishCategory
     private $thumbnail;
 
     /**
-     * @OneToMany(targetEntity="App\Entity\EnglishVideo", mappedBy="englishCategory")
-     * @ORM\OrderBy({"createdAt": "DESC"})
+     * @ORM\Column(type="string", length=255)
      */
-    private $englishVideos;
+    private $duration;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $uri;
+
+    /**
+     * @ManyToOne(targetEntity="VideoCategory", inversedBy="videos")
+     */
+    private $videoCategory;
 
     /**
      * @var DateTime
@@ -90,17 +105,17 @@ class EnglishCategory
     /**
      * @return mixed
      */
-    public function getDescription()
+    public function getType()
     {
-        return $this->description;
+        return $this->type;
     }
 
     /**
-     * @param mixed $description
+     * @param mixed $type
      */
-    public function setDescription($description): void
+    public function setType($type): void
     {
-        $this->description = $description;
+        $this->type = $type;
     }
 
     /**
@@ -122,17 +137,65 @@ class EnglishCategory
     /**
      * @return mixed
      */
-    public function getEnglishVideos()
+    public function getDuration()
     {
-        return $this->englishVideos;
+        return $this->duration;
     }
 
     /**
-     * @param mixed $englishVideos
+     * @param mixed $duration
      */
-    public function setEnglishVideos($englishVideos): void
+    public function setDuration($duration): void
     {
-        $this->englishVideos = $englishVideos;
+        $this->duration = $duration;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUri()
+    {
+        return $this->uri;
+    }
+
+    /**
+     * @param mixed $uri
+     */
+    public function setUri($uri): void
+    {
+        $this->uri = $uri;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVideoCategory()
+    {
+        return $this->videoCategory;
+    }
+
+    /**
+     * @param mixed $videoCategory
+     */
+    public function setVideoCategory($videoCategory): void
+    {
+        $this->videoCategory = $videoCategory;
     }
 
     /**

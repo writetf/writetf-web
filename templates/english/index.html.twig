@@ -5,7 +5,7 @@
         <h1>Categories</h1>
         <ul class="list-view">
             {% for category in categories %}
-                {% if category.englishVideos | length > 0 %}
+                {% if category.videos | length > 0 %}
                 <li class="list-item">
                     <a href="{{ path('english_category_detail', {id: category.id} ) }}">
                         <div class="data">
@@ -39,11 +39,11 @@
     <div class="clearfix"></div>
 
     {% for category in categories %}
-        {% if category.englishVideos | length > 0 %}
+        {% if category.videos | length > 0 %}
             <div id="videos">
                 <h1>{{ category.name }}</h1>
                 <ul class="list-view videos">
-                    {% for item in category.englishVideos %}
+                    {% for item in category.videos %}
                         <li class="list-item video">
                             <a href="{{ path('english_video_detail', {id: item.id} ) }}">
                                 <div class="thumbnail">

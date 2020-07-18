@@ -21,6 +21,7 @@ class VideoRepository extends ServiceEntityRepository
             ->leftJoin('v.videoCategory', 'vc')
             ->where('vc.product = :product')
             ->setParameter('product', $product)
+            ->orderBy('v.createdAt', 'DESC')
             ->setFirstResult($offset)
             ->setMaxResults($limit);
 

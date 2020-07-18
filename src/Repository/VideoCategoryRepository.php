@@ -18,6 +18,9 @@ class VideoCategoryRepository extends ServiceEntityRepository
         return $this->findBy(
             [
                 'product' => $product
+            ],
+            [
+                'createdAt' => 'DESC'
             ]
         );
     }

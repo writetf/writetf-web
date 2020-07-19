@@ -49,6 +49,18 @@ class YoutubeImportCommand extends Command
             [
                 'q' => 'British Council Learning English',
                 'category_id' => 3
+            ],
+            [
+                'q' => 'IELTS Charlie',
+                'category_id' => 4
+            ],
+            [
+                'q' => 'Oxford Online English',
+                'category_id' => 5
+            ],
+            [
+                'q' => 'Cambridge English',
+                'category_id' => 6
             ]
         ];
         foreach ($mappings as $search) {
@@ -62,6 +74,7 @@ class YoutubeImportCommand extends Command
             $io->success('Importing data to database for keyword: '. $search['q'] . ' - Category ID: ' . $search['category_id']);
             $this->youtubeImportService->createByYoutubeData($data, $search['category_id']);
             $io->success('Successfully import data to database for keyword: '. $search['q'] . ' - Category ID: ' . $search['category_id']);
+            sleep(5);
         }
         $io->success('Successfully import data from Youtube!');
 

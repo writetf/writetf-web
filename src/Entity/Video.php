@@ -24,6 +24,11 @@ class Video
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $youtubeId;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -84,6 +89,22 @@ class Video
     public function setId(string $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutubeId()
+    {
+        return $this->youtubeId;
+    }
+
+    /**
+     * @param mixed $youtubeId
+     */
+    public function setYoutubeId($youtubeId): void
+    {
+        $this->youtubeId = $youtubeId;
     }
 
     /**

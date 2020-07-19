@@ -17,6 +17,7 @@
     "doctrine/orm": "^2.5.11",
     "erusev/parsedown": "^1.6",
     "firebase/php-jwt": "^5.2",
+    "google/apiclient": "^2.0",
     "iamcal/php-emoji": "^1.4",
     "knplabs/knp-time-bundle": "^1.9",
     "mobiledetect/mobiledetectlib": "^2.8",

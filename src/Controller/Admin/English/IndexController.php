@@ -2,11 +2,8 @@
 
 namespace App\Controller\Admin\English;
 
-use Exception;
-use App\Entity\Post;
 use App\Entity\Video;
-use App\Repository\PostRepository;
-use App\Service\EnglishVideoService;
+use App\Service\VideoService;
 use App\Repository\VideoRepository;
 use App\Repository\VideoCategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,17 +20,18 @@ class IndexController extends AbstractController
 {
     /**
      * @Route("", methods={"GET"}, name="admin_english_index")
-     * @param VideoCategoryRepository $englishCategoryRepository
      * @param VideoRepository $englishVideoRepository
      * @return Response
      */
     public function index(
-        VideoCategoryRepository $englishCategoryRepository,
         VideoRepository $englishVideoRepository
     ): Response {
-        $posts = $englishVideoRepository->findBy([], [
-            'createdAt' => 'DESC'
-        ]);
+        $posts = $englishVideoRepository->findBy(
+            [],
+            [
+                'createdAt' => 'DESC'
+            ]
+        );
         return $this->render(
             'admin/english/index.html.twig',
             [
@@ -46,17 +44,17 @@ class IndexController extends AbstractController
      * @Route("/create/youtube", name="admin_english_create_youtube")
      * @param Request $request
      * @param VideoCategoryRepository $categoryService
-     * @param EnglishVideoService $postService
+     * @param VideoService $videoService
      * @return RedirectResponse|Response
      */
     public function youtubeCreate(
         Request $request,
         VideoCategoryRepository $categoryService,
-        EnglishVideoService $postService
+        VideoService $videoService
     ) {
         $categories = $categoryService->findAll();
         if ($request->isMethod('post')) {
-            $postService->youtubeCreate($request);
+            $videoService->youtubeCreate($request);
             $this->addFlash('success', 'Create new post successfully!');
             return $this->redirectToRoute('admin_english_index');
         }
@@ -73,7 +71,7 @@ class IndexController extends AbstractController
      * @param $id
      * @param Request $request
      * @param VideoRepository $englishVideoRepository
-     * @param EnglishVideoService $postService
+     * @param VideoService $postService
      * @param VideoCategoryRepository $categoryService
      * @return RedirectResponse|Response
      */
@@ -81,7 +79,7 @@ class IndexController extends AbstractController
         $id,
         Request $request,
         VideoRepository $englishVideoRepository,
-        EnglishVideoService $postService,
+        VideoService $postService,
         VideoCategoryRepository $categoryService
     ) {
         /** @var Video $post */

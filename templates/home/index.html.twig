@@ -18,7 +18,8 @@
 {% block nav %}
     <div class="nav">
         <div class="nav-inside">
-            <div class="item left logo"><img src="/images/writetf-transparent.png" width="35"><h1>{% block title %}Writetf{% endblock %}</h1></div>
+            <div class="item left logo"><img src="/images/writetf-transparent.png" width="35">
+                <h1>{% block title %}Writetf{% endblock %}</h1></div>
             <div class="item middle"></div>
             <div class="item right">{% block header_right %}
                     {% if app.user %}
@@ -49,18 +50,20 @@
 {% block javascripts %}
     {{ encore_entry_script_tags('home') }}
     {% if app.environment == 'prod' %}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150392936-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
+        <script data-ad-client="ca-pub-7239842536007968" async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150392936-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+          function gtag() {
+            dataLayer.push(arguments);
+          }
 
-      gtag('js', new Date());
-      gtag('config', 'UA-150392936-1');
-    </script>
+          gtag('js', new Date());
+          gtag('config', 'UA-150392936-1');
+        </script>
     {% endif %}
 {% endblock %}
 </body>

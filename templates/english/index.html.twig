@@ -37,29 +37,4 @@
         </ul>
     </div>
     <div class="clearfix"></div>
-
-    {% for category in categories %}
-        {% if category.videos | length > 0 %}
-            <div id="videos">
-                <h1>{{ category.name }}</h1>
-                <ul class="list-view videos">
-                    {% for item in category.videos %}
-                        <li class="list-item video">
-                            <a href="{{ path('english_video_detail', {id: item.id} ) }}">
-                                <div class="thumbnail">
-                                    <img src="{{ item.thumbnail }}" alt="thumbnail">
-                                    <div class="duration">{{ item.duration }}</div>
-                                </div>
-                                <div class="data">
-                                    <h2>{{ item.name }}</h2>
-                                </div>
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-    {% endfor %}
-
 {% endblock %}

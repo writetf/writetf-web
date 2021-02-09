@@ -1,0 +1,14 @@
+@import "theme";
+
+.section{
+  .section-header{
+    background: $main-color;
+    height: 35px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    .section-title{
+
+    }
+  }
+}

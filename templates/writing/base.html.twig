@@ -1,0 +1,37 @@
+<html lang="vi">
+<header>
+    <title>{% block title %}Writing - Hãy cùng blog thật vui!{% endblock %}</title>
+    {% block stylesheets %}{{ encore_entry_link_tags('writing') }}{% endblock %}
+</header>
+<body>
+<div id="header">
+    {% block header %}
+        <div id="logo"><h1>Writing</h1></div>
+    {% endblock %}
+</div>
+<div id="main">
+    {% block main %}
+    <div id="col-left">
+        {% block left %}
+        {% endblock %}
+    </div>
+    <div id="col-middle">
+        {% block middle %}
+        {% endblock %}
+    </div>
+    <div id="col-right">
+        {% block right %}
+        {% endblock %}
+    </div>
+    {% endblock %}
+</div>
+<div id="footer">
+    {% block footer %}
+        <div class="copyright">Copyright © 2020 Writing</div>
+    {% endblock %}
+</div>
+{% block javascripts %}
+    {{ encore_entry_script_tags('writing') }}
+{% endblock %}
+</body>
+</html>

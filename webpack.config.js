@@ -29,6 +29,7 @@ Encore
     .addEntry('chat', './assets/js/chat.js')
     .addEntry('love', './assets/js/love.js')
     .addEntry('createPost', './assets/js/createPost.js')
+    .addEntry('writing', './assets/js/writing.js')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .enableIntegrityHashes(Encore.isProduction())

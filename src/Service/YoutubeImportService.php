@@ -42,10 +42,11 @@ class YoutubeImportService
 
     /**
      * @param $string
+     * @param $relevanceLanguage
      * @return array
      * @throws Exception
      */
-    public function search($string)
+    public function search($string, $relevanceLanguage = null)
     {
         $nextPageToken = null;
         $data = [];
@@ -58,6 +59,9 @@ class YoutubeImportService
                 [
                     'q' => $string,
                     'type' => 'video',
+                    'order' => 'date',
+                    'videoEmbeddable' => 'true',
+                    'videoLicense' => 'creativeCommon',
                     'maxResults' => self::LIMIT,
                     'pageToken' => $nextPageToken
                 ]
@@ -89,8 +93,8 @@ class YoutubeImportService
             $videoDescription = $videoSnippet->getDescription();
             $data[$id->getVideoId()] = [
                 'id' => $id->getVideoId(),
-                'name' => htmlspecialchars_decode($videoTitle,ENT_QUOTES),
-                'description' => htmlspecialchars_decode($videoDescription,ENT_QUOTES),
+                'name' => $this->getText($videoTitle),
+                'description' => $this->getText($videoDescription),
                 'thumbnails' => [
                     'url' => $thumbnails->getHigh()->getUrl(),
                     'width' => $thumbnails->getHigh()->getWidth(),
@@ -101,6 +105,10 @@ class YoutubeImportService
         $data = $this->getVideoDuration($data);
 
         return $data;
+    }
+
+    protected function getText($string){
+        return utf8_encode(htmlspecialchars_decode($string,ENT_QUOTES));
     }
 
     /**

@@ -35,6 +35,16 @@ class VideoCategory
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $keyword;
+
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $relevanceLanguage;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $thumbnail;
 
     /**
@@ -106,6 +116,38 @@ class VideoCategory
     public function setDescription($description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKeyword()
+    {
+        return $this->keyword;
+    }
+
+    /**
+     * @param mixed $keyword
+     */
+    public function setKeyword($keyword): void
+    {
+        $this->keyword = $keyword;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRelevanceLanguage()
+    {
+        return $this->relevanceLanguage;
+    }
+
+    /**
+     * @param mixed $relevanceLanguage
+     */
+    public function setRelevanceLanguage($relevanceLanguage): void
+    {
+        $this->relevanceLanguage = $relevanceLanguage;
     }
 
     /**

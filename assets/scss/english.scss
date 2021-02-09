@@ -175,7 +175,6 @@ ul {
         padding: 15px;
         background: $main-color;
         color: #ffffff;
-        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -186,11 +185,11 @@ ul {
 }
 
 ul.list-view {
-  display: grid;
   list-style: none;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   margin-left: -7px;
   margin-right: -7px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
 
   li {
     margin-right: 7px;
@@ -236,12 +235,14 @@ ul.list-view {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  word-break: break-word;
 }
 
 .list-view .list-item .data h2 {
   margin-bottom: 6px;
   font-size: 15px;
   font-weight: normal;
+  word-wrap: break-word;
 }
 
 .list-view .list-item .data h3, .list-view .list-item .data p {
@@ -327,4 +328,28 @@ div#next .recommend-title {
   display: block;
   width: 100%;
   font-size: 18px;
+}
+
+@media (max-width: 900px) {
+  ul.list-view {
+    grid-template-columns: auto auto auto auto;
+  }
+}
+
+@media (max-width: 720px) {
+  ul.list-view {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media (max-width: 480px) {
+  ul.list-view {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width: 240px) {
+  ul.list-view {
+    grid-template-columns: auto;
+  }
 }

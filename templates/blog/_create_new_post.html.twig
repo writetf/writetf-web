@@ -45,6 +45,11 @@
     {% endif %}
 </div>
 
-
-{{ encore_entry_link_tags('createPost') }}
-{{ encore_entry_script_tags('createPost') }}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('createPost') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('createPost') }}
+{% endblock %}

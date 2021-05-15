@@ -33,7 +33,9 @@
 {#            </div>#}
 {#        </div>#}
         <div class="logout">
-            <a class="btn btn-sm btn-danger btn-logout" href="{{ path('security_logout') }}">Logout</a>
+            <form class="d-flex" action="{{ path('security_logout') }}" method="post" style="justify-content: center; flex: 1">
+                <button type="submit" class="btn btn-danger btn-logout btn-block">Logout</button>
+            </form>
         </div>
     </div>
 {% endblock %}

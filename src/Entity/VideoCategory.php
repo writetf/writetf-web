@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EnglishCategoryRepository")
- * @ORM\Table(name="english_category")
+ * @ORM\Entity(repositoryClass="App\Repository\VideoCategoryRepository")
+ * @ORM\Table(name="video_category")
  */
-class EnglishCategory
+class VideoCategory
 {
     /**
      * @var string
@@ -35,13 +35,28 @@ class EnglishCategory
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $keyword;
+
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $relevanceLanguage;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $thumbnail;
 
     /**
-     * @OneToMany(targetEntity="App\Entity\EnglishVideo", mappedBy="englishCategory")
+     * @ORM\Column(type="string", length=50)
+     */
+    private $product;
+
+    /**
+     * @OneToMany(targetEntity="Video", mappedBy="videoCategory")
      * @ORM\OrderBy({"createdAt": "DESC"})
      */
-    private $englishVideos;
+    private $videos;
 
     /**
      * @var DateTime
@@ -106,6 +121,38 @@ class EnglishCategory
     /**
      * @return mixed
      */
+    public function getKeyword()
+    {
+        return $this->keyword;
+    }
+
+    /**
+     * @param mixed $keyword
+     */
+    public function setKeyword($keyword): void
+    {
+        $this->keyword = $keyword;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRelevanceLanguage()
+    {
+        return $this->relevanceLanguage;
+    }
+
+    /**
+     * @param mixed $relevanceLanguage
+     */
+    public function setRelevanceLanguage($relevanceLanguage): void
+    {
+        $this->relevanceLanguage = $relevanceLanguage;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getThumbnail()
     {
         return $this->thumbnail;
@@ -122,17 +169,17 @@ class EnglishCategory
     /**
      * @return mixed
      */
-    public function getEnglishVideos()
+    public function getVideos()
     {
-        return $this->englishVideos;
+        return $this->videos;
     }
 
     /**
-     * @param mixed $englishVideos
+     * @param mixed $videos
      */
-    public function setEnglishVideos($englishVideos): void
+    public function setVideos($videos): void
     {
-        $this->englishVideos = $englishVideos;
+        $this->videos = $videos;
     }
 
     /**
@@ -149,5 +196,21 @@ class EnglishCategory
     public function setCreatedAt(DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param mixed $product
+     */
+    public function setProduct($product): void
+    {
+        $this->product = $product;
     }
 }

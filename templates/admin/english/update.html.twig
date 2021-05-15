@@ -1,0 +1,59 @@
+{% extends 'admin/dashboard.html.twig' %}
+
+{% block main_title %}{% if post is defined %}Update post: "{{ post.name }}"{% else %}Create Youtube post{% endif %}{% endblock %}
+
+{% block main_body %}
+    <form method="post" enctype="multipart/form-data" novalidate>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="title">Name</label>
+                <input type="text" class="form-control" id="name" name="name"
+                       {% if post is defined %}value="{{ post.name }}"{% endif %} required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="category">Category</label>
+                <select id="category" class="custom-select" name="category_id">
+                    <option {% if post is not defined %}selected{% endif %}>Choose one</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}"
+                                {% if post is defined and post.englishCategory.id == category.id %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="title">Type</label>
+                <input type="text" class="form-control" id="type" name="type" {% if post is defined %}value="{{ post.type }}"{% endif %} required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="title">Thumbnail</label>
+                <input type="text" class="form-control" id="type" name="thumbnail" {% if post is defined %}value="{{ post.thumbnail }}"{% endif %} required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="title">Duration</label>
+                <input type="text" class="form-control" id="type" name="duration" {% if post is defined %}value="{{ post.duration }}"{% endif %} required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="title">Uri</label>
+                <input type="text" class="form-control" id="type" name="uri" {% if post is defined %}value="{{ post.uri }}"{% endif %} required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="content">Description</label>
+                <textarea id="description" class="form-control" name="description"
+                          rows="5">{% if post is defined %}{{ post.description }}{% endif %}</textarea>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+{% endblock %}

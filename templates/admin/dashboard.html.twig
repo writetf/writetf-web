@@ -1,0 +1,60 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between fixed-top">
+            <a class="navbar-brand" href="#">Writetf</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="desktop-only" action="{{ path('security_logout') }}" method="post">
+                <button type="submit" class="btn btn-link text-light">Sign out</button>
+            </form>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="left">
+                <div class="sidebar navbar navbar-expand-md">
+                    <ul class="flex-column collapse navbar-collapse" id="navbarCollapse">
+                        <li class="nav-item">
+                            <a class="nav-link{% if app.request.get('_route') starts with 'admin_home_index' %} active{% endif %}"
+                               href="{{ path('admin_home_index') }}">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link{% if app.request.get('_route') starts with 'admin_english_index' %} active{% endif %}"
+                               href="{{ path('admin_english_index') }}">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="right">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">{% block main_title %}Dashboard{% endblock %}</h1>
+                    {% block main_title_right %}{% endblock %}
+                </div>
+                <div class="mb-5">
+                    {% block main_body %}{% endblock %}
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

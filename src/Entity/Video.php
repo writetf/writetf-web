@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EnglishVideoRepository")
- * @ORM\Table(name="english_video")
+ * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
+ * @ORM\Table(name="video")
  */
-class EnglishVideo
+class Video
 {
     /**
      * @var string
@@ -22,6 +22,11 @@ class EnglishVideo
      * @ORM\CustomIdGenerator(class="App\Doctrine\UuidGenerator")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $youtubeId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -54,9 +59,9 @@ class EnglishVideo
     private $uri;
 
     /**
-     * @ManyToOne(targetEntity="App\Entity\EnglishCategory", inversedBy="englishVideos")
+     * @ManyToOne(targetEntity="VideoCategory", inversedBy="videos")
      */
-    private $englishCategory;
+    private $videoCategory;
 
     /**
      * @var DateTime
@@ -84,6 +89,22 @@ class EnglishVideo
     public function setId(string $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutubeId()
+    {
+        return $this->youtubeId;
+    }
+
+    /**
+     * @param mixed $youtubeId
+     */
+    public function setYoutubeId($youtubeId): void
+    {
+        $this->youtubeId = $youtubeId;
     }
 
     /**
@@ -185,17 +206,17 @@ class EnglishVideo
     /**
      * @return mixed
      */
-    public function getEnglishCategory()
+    public function getVideoCategory()
     {
-        return $this->englishCategory;
+        return $this->videoCategory;
     }
 
     /**
-     * @param mixed $englishCategory
+     * @param mixed $videoCategory
      */
-    public function setEnglishCategory($englishCategory): void
+    public function setVideoCategory($videoCategory): void
     {
-        $this->englishCategory = $englishCategory;
+        $this->videoCategory = $videoCategory;
     }
 
     /**

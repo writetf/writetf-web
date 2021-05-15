@@ -1,0 +1,29 @@
+{% extends 'writing/base.html.twig' %}
+
+{% block title %}Tạo tài khoản miễn phí{% endblock %}
+
+{% block main %}
+<div id="register-form">
+    <h1>Tạo tài khoản miễn phí</h1>
+    <form method="post" action="{{ path('writing_register') }}">
+        <div class="input">
+            <label>Email</label>
+            <input id="email" title="Email" type="email" name="email">
+        </div>
+        <div class="input">
+            <label>Password</label>
+            <input id="password" title="Password" type="password" name="password">
+        </div>
+        <div class="checkbox">
+            <input id="password" title="Allow permission" type="checkbox" name="permission">
+            <span>Tôi đồng ý với điều khoản sử dụng</span>
+        </div>
+        <div class="button">
+            <button type="submit">Đăng ký</button>
+        </div>
+    </form>
+    <div class="detail">
+        <span>Đã có tài khoản? </span><a href="{{ path('writing_login') }}">Đăng nhập</a>
+    </div>
+</div>
+{% endblock %}

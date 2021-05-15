@@ -6,6 +6,7 @@ use Swift_Mailer;
 use Swift_Message;
 use App\Entity\Post;
 use App\Entity\User;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Twig\Environment;
 use App\Entity\Comment;
 use Twig\Error\SyntaxError;
@@ -42,13 +43,13 @@ class CommentNotificationSubscriber implements EventSubscriberInterface
         TranslatorInterface $translator,
         EntityManagerInterface $entityManager,
         LoggerInterface $logger,
-        $sender
+        ParameterBagInterface $parameterBag
     )
     {
         $this->mailer = $mailer;
         $this->urlGenerator = $urlGenerator;
         $this->translator = $translator;
-        $this->sender = $sender;
+        $this->sender = $parameterBag->get('sender');
         $this->templating = $templating;
         $this->notificationRepository = $entityManager->getRepository(Notification::class);
         $this->entityManager = $entityManager;

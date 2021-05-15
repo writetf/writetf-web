@@ -1,19 +1,306 @@
-<!DOCTYPE html>
-<html>
+{% apply spaceless %}
+    <!DOCTYPE html>
+    <html lang="vi">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>{% block title %}Write to forget!{% endblock %}</title>
+        <meta name="description"
+              content="{% block description %}A new social network for everybody who want to share anything.{% endblock %}"/>
+        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <meta property="og:site_name" content="Writetf"/>
+        <meta property="og:type" content="website"/>
+        {% if app.request.attributes.has('_route') %}
+            <meta property="og:url"
+                  content="{{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"/>
+        {% endif %}
+        <meta property="og:title" content="{% block og_title %}Write to forget!{% endblock %}"/>
+        <meta property="og:description"
+              content="{% block og_description %}A new social network for everybody who want to share anything.{% endblock %}"/>
+        <meta property="og:image" content="{% block og_image %}https://writetf.com/logo.png{% endblock %}">
+        <meta property="og:image:alt" content="{% block og_image_alt %}The Writetf logo{% endblock %}">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="{% block ogImageWidth %}300{% endblock %}">
+        <meta property="og:image:height" content="{% block ogImageHeight %}300{% endblock %}">
+        <link rel="manifest" href="/manifest.json">
+
+        {% if app.environment == 'prod' %}
+            <script data-ad-client="ca-pub-7239842536007968" async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150392936-1"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('js', new Date());
+
+                gtag('config', 'UA-150392936-1');
+            </script>
+        {% endif %}
+        <script>
+            window.onload = () => {
+                'use strict';
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker
+                        .register('/sw.js');
+                }
+            }
+        </script>
     </head>
-    <body>
-        {% block body %}{% endblock %}
+
+    <body id="{% block body_id %}{% endblock %}">
+    {% block main_fullsize %}
+        {% block header %}
+            <header {% if app.user %}style="background: '{{ app.user.color }}'"{% endif %}>
+                <div id="header" class="col-lg-6">
+                    <ul id="menu-left" class="nav">
+                        <li class="item">
+                            <a class="link" href="{{ path('community_index') }}">
+                                <span class="nav-brand pb-0 mb-0">Communities <sup class="text-sup">beta</sup></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul id="menu-right" class="nav">
+                        {% block header_navigation_links %}
+                        {% endblock %}
+                        {% if app.user %}
+                            <li class="item">
+                                <div class="avatar-primary-menu">
+                                    <div class="chat-avatar">{{ include('blog/_avatar.html.twig', {user:app.user}) }}</div>
+                                    <div class="chat-username">
+                                        <a href="{{ path('blog_user_index', {userSlug: app.user.slug}) }}"
+                                           class="text-decoration-none">
+                                            {{ app.user.displayText|length > 20   ? app.user.displayText|slice(0, 20 ) ~ '...' : app.user.displayText }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                {#                                <a class="link" href="{{ path('cart_index') }}">#}
+                                {#                                    <div class="text-sub">#}
+                                {#                                        <i class="fas fa-shopping-cart"></i>#}
+                                {#                                        {% if app.user.notifications|length >0 %}#}
+                                {#                                            <div class="text-sup-menu sub-header">{{ app.user.notifications|length }}</div>{% endif %}#}
+                                {#                                    </div>#}
+                                {#                                    Cart#}
+                                {#                                </a>#}
+                                <a class="link" href="{{ path('admin_notifications_index') }}">
+                                    <div class="text-sub">
+                                        <i class="fas fa-globe-asia"></i>
+                                        {% if app.user.notifications|length >0 %}
+                                            <div class="text-sup-menu sub-header">{{ app.user.notificationsUnSeen|length }}</div>{% endif %}
+                                    </div>
+                                    Notifications
+                                </a>
+                            </li>
+
+                        {% else %}
+                            <li class="item btn-item">
+                                <a class="link btn btn-sm btn-outline-light btn-login"
+                                   href="{{ path('security_login') }}{% if app.request.get('_route') != 'security_login' and app.request.get('_route') != 'security_register' %}?redirect={{ app.request.pathinfo }}{% endif %}">
+                                    {{ 'menu.login'|trans }}
+                                </a>
+                            </li>
+                            <li class="item btn-item">
+                                <a class="link btn btn-sm btn-outline-light btn-register"
+                                   href="{{ path('security_register') }}{% if app.request.get('_route') != 'security_login' and app.request.get('_route') != 'security_register' %}?redirect={{ app.request.pathinfo }}{% endif %}">
+                                    {{ 'menu.register'|trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    {% if app.user %}
+                        <ul id="menu-mobile" class="nav">
+                            <li class="item{% if app.request.get('_route') == 'blog_index' %} active{% endif %}">
+                                <a class="link" href="{{ path('blog_index') }}"><i class="fas fa-rss"></i></a>
+                            </li>
+                            <li class="item {% if app.request.get('_route') == 'community_index' %} active{% endif %}">
+                                <a class="link" href="{{ path('community_index') }}"><i
+                                            class="fas fa-users"></i></a>
+                            </li>
+                            <li class="item {% if app.request.get('_route') == 'blog_user_index' %} active{% endif %}">
+                                <a class="link" href="{{ path('blog_user_index', {userSlug: app.user.slug}) }}">
+                                    <div class="avatar">{{ include('blog/_avatar.html.twig', {user:app.user}) }}</div>
+                                </a>
+                            </li>
+                            <li class="item {% if app.request.get('_route') == 'admin_notifications_index' %} active{% endif %}">
+                                <a class="link" href="{{ path('admin_notifications_index') }}">
+                                    <div class="text-sub">
+                                        <i class="fas fa-globe-asia"></i>
+                                        {% if app.user.notifications|length >0 %}
+                                            <div class="text-sup-menu sub-header">{{ app.user.notificationsUnSeen|length }}</div>{% endif %}
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item {% if app.request.get('_route') == 'settings_index' %} active{% endif %}">
+                                <a class="link" href="{{ path('settings_index') }}"><i class="fas fa-cog"></i></a>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul id="menu-mobile-left" class="nav">
+                            <li class="item">
+                                <a class="link" href="{{ path('community_index') }}">
+                                        <span class="nav-brand pb-0 mb-0">Communities <sup
+                                                    class="text-sup">beta</sup></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul id="menu-mobile-right" class="nav">
+                            <li class="item btn-item">
+                                <a class="link btn btn-sm btn-outline-light btn-login"
+                                   href="{{ path('security_login') }}?path={{ app.request.uri }}">
+                                    {{ 'menu.login'|trans }}
+                                </a>
+                            </li>
+                            <li class="item btn-item">
+                                <a class="link btn btn-sm btn-outline-light btn-register"
+                                   href="{{ path('security_register') }}">
+                                    {{ 'menu.register'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </header>
+        {% endblock %}
+        <div id="wrapper">
+            {% block out_side_left %}
+                {% block sidebar_left %}
+                    <div id="sidebar-left" class="sidebar">
+                        <div id="profile">
+                            {% if app.user %}
+                                <div class="avatar-group">
+                                    <div class="avatar">{{ include('blog/_avatar.html.twig', {user:app.user}) }}</div>
+                                    <div class="username">
+                                        <a href="{{ path('blog_user_index', {userSlug: app.user.slug}) }}"
+                                           class="text-decoration-none">
+                                            {{ app.user.displayText|length > 20   ? app.user.displayText|slice(0, 20 ) ~ '...' : app.user.displayText }}
+                                        </a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="avatar-group anonymous">
+                                    <div class="avatar anonymous"><img alt="Writetf logo" src="/logo.png"></div>
+                                    <div class="username anonymous">Anonymous</div>
+                                </div>
+                            {% endif %}
+                            {% if app.user %}
+                                <div class="points-group">
+                                    <div class="points">
+                                        <div class="item-icon">
+                                            <i class="fas fa-sticky-note"></i>
+                                        </div>
+                                        <div class="item-detail">
+                                            <span class="item-data">{{ app.user.posts|length }}</span>
+                                            <span class="item-description">Posts</span>
+                                        </div>
+                                    </div>
+                                    <div class="join-date">
+                                        <div class="item-icon"><i class="fas fa-calendar-alt"></i></div>
+                                        <div class="item-detail">
+                                            <span class="item-data">{{ app.user.createdAt|ago }}</span>
+                                            <span class="item-description">Created at</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <ul id="profile-menu">
+                                <li class="profile-menu-item {% if app.request.get('_route') == 'community_index' %} active{% endif %}">
+                                    <a href="{{ path('community_index') }}"><span><i class="fas fa-users"></i> Communities</span></a>
+                                </li>
+                                {#                                {% if app.user %}#}
+                                {#                                    <li class="profile-menu-item {% if app.request.get('_route') == 'admin_notifications_index' %} active{% endif %}">#}
+                                {#                                        <a href="{{ path('admin_notifications_index') }}">#}
+                                {#                                            <span class="text-title"><i#}
+                                {#                                                        class="fas fa-globe-asia"></i> Notifications</span>#}
+                                {#                                            <div class="text-sub">#}
+                                {#                                                {% if app.user.notifications|length >0 %}#}
+                                {#                                                    <div class="text-sup-menu">{{ app.user.notifications|length }}</div>#}
+                                {#                                                {% endif %}#}
+                                {#                                            </div>#}
+                                {#                                        </a>#}
+                                {#                                    </li>#}
+                                {#                                {% endif %}#}
+                                <li class="profile-menu-item{% if app.request.get('_route') == 'blog_index' %} active{% endif %}">
+                                    <a href="{{ path('blog_index') }}"><span><i
+                                                    class="fas fa-rss"></i> What's new</span></a>
+                                </li>
+                                {#                                <li class="profile-menu-item{% if app.request.get('_route') == 'store_index' %} active{% endif %}">#}
+                                {#                                    <a href="{{ path('store_index') }}"><span><i class="fas fa-store"></i> Writetf's Store</span></a>#}
+                                {#                                </li>#}
+                                {#                                <li class="profile-menu-item{% if app.request.get('_route') == 'coins_index' %} active{% endif %}">#}
+                                {#                                    <a href="{{ path('coins_index') }}"><span><i class="fas fa-copyright"></i> Writetf Coins</span></a>#}
+                                {#                                </li>#}
+                                {% if app.user %}
+                                    {#                                    <li class="profile-menu-item{% if app.request.get('_route') == 'order_index' %} active{% endif %}">#}
+                                    {#                                        <a href="{{ path('order_index') }}"><span><i class="fas fa-list-alt"></i> My Orders</span></a>#}
+                                    {#                                    </li>#}
+                                    <li class="profile-menu-item{% if app.request.get('_route') == 'settings_index' %} active{% endif %}">
+                                        <a href="{{ path('settings_index') }}"><span><i class="fas fa-cog"></i> Settings</span></a>
+                                    </li>
+                                    {#                                    <li class="profile-menu-item">#}
+                                    {#                                        <a href="{{ path('security_logout') }}"><span><i#}
+                                    {#                                                        class="fas fa-sign-out-alt"></i> Logout</span></a>#}
+                                    {#                                    </li>#}
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                    </div>
+                {% endblock %}
+            {% endblock %}
+
+            <div id="main-wrapper">
+                {% block body %}
+                    {% block before_main %}{% endblock %}
+                    {% block out_side_main %}
+                        <div id="main" class="col-lg-5">
+                            {% block main %}{% endblock %}
+                        </div>
+                    {% endblock %}
+                    {% block out_side_right %}
+                        {% block sidebar_right %}
+                        {% endblock %}
+                    {% endblock %}
+                {% endblock %}
+
+            </div>
+        </div>
+
+        {% block footer %}
+        {% endblock %}
+    {% endblock %}
+
+
+    {% block ads %}
+        {% if app.user is null %}
+            {% if app.request.get('_route') != 'security_login' and app.request.get('_route') != 'security_register' %}
+                <style>
+                    body {
+                        margin-bottom: 250px;
+                    }
+                </style>
+                {{ include('ads.html.twig') }}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('love') }}
+    {% endblock %}
+
+    {# it's not mandatory to set the timezone in localizeddate(). This is done to
+       avoid errors when the 'intl' PHP extension is not available and the application
+       is forced to use the limited "intl polyfill", which only supports UTC and GMT #}
+    <!-- Page rendered on {{ 'now'|localizeddate('long', 'long', null, 'UTC') }} -->
     </body>
-</html>
+    </html>
+{% endapply %}
